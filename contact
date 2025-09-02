@@ -1,0 +1,24 @@
+const form = document.querySelector("#contact-form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value,
+  };
+
+  const response = await fetch("https://contact.tyriqnallen.workers.dev", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    alert("Form submitted successfully!");
+    form.reset();
+  } else {
+    alert("There was an error submitting the form.");
+  }
+});
