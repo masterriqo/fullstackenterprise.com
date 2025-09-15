@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FullStack Enterprise</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css"> <!-- Corrected filename -->
 </head>
 <body>
   <header>
@@ -17,27 +18,34 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <main class="hero">
     <h1>Welcome to FullStack Enterprise</h1>
     <p>Build skills. Build freedom. Build your future.</p>
-  </section>
 
-  <section class="cta">
-    <h2>Join Our Newsletter</h2>
-    <form id="lead-form" method="POST" action="https://marketing-api.tyriqnallen.workers.dev/">
-      <!-- Hidden UTM fields -->
-      <input type="hidden" name="utm_source" id="utm_source">
-      <input type="hidden" name="utm_medium" id="utm_medium">
-      <input type="hidden" name="utm_campaign" id="utm_campaign">
-      <input type="hidden" name="utm_content" id="utm_content">
+    <section class="cta">
+      <h2>Join Our Newsletter</h2>
+      <form id="lead-form" method="POST" action="https://marketing-api.tyriqnallen.workers.dev/">
+        <!-- Hidden UTM fields -->
+        <input type="hidden" name="utm_source" id="utm_source">
+        <input type="hidden" name="utm_medium" id="utm_medium">
+        <input type="hidden" name="utm_campaign" id="utm_campaign">
+        <input type="hidden" name="utm_content" id="utm_content">
 
-      <!-- Visible fields -->
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit" id="submit-btn">Subscribe</button>
-    </form>
-    <p id="form-response"></p>
-  </section>
+        <!-- Visible fields -->
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit" id="submit-btn">Subscribe</button>
+      </form>
+      <p id="form-response"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="/privacy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms of Service</a>
+    </p>
+  </footer>
 
   <script>
   (function() {
