@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   background: #000;
   color: #fff;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header + Nav */
@@ -48,10 +51,15 @@ header {
   color: #aaa;
 }
 
-/* Hero Section */
-.hero {
-  padding: 100px 40px 60px;
+/* Main Hero Section */
+main.hero {
+  flex: 1; /* fill remaining space to push footer down */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
   text-align: center;
+  padding: 80px 40px;
 }
 
 .hero h1 {
@@ -67,18 +75,19 @@ header {
 
 /* Call-to-action / Form section */
 .cta {
+  width: 100%;
   max-width: 600px;
-  margin: 0 auto;
   background: #111;
   padding: 30px;
+  margin-top: 40px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
+  text-align: center;
 }
 
 .cta h2 {
   font-size: 1.75rem;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .cta form {
@@ -88,19 +97,14 @@ header {
 }
 
 .cta input,
-.cta textarea,
-.cta button {
+.cta textarea {
+  width: 100%;
   padding: 12px;
   border-radius: 6px;
-  border: none;
-  font-size: 1rem;
-}
-
-.cta input,
-.cta textarea {
+  border: 1px solid #333;
   background: #222;
   color: #fff;
-  border: 1px solid #333;
+  font-size: 1rem;
 }
 
 .cta input::placeholder,
@@ -115,11 +119,19 @@ header {
 }
 
 .cta button {
-  background: #007bff;
-  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  background: #007bff;
+  color: #fff;
   transition: background 0.2s ease;
+}
+
+.cta button:hover:not(:disabled) {
+  background: #0056b3;
 }
 
 .cta button:disabled {
@@ -127,13 +139,10 @@ header {
   cursor: not-allowed;
 }
 
-.cta button:hover:not(:disabled) {
-  background: #0056b3;
-}
-
 /* Form Response */
 #form-response {
-  margin-top: 10px;
+  margin-top: 15px;
+  font-weight: bold;
   font-size: 0.95rem;
   text-align: center;
 }
@@ -141,20 +150,18 @@ header {
 /* Footer */
 footer {
   text-align: center;
-  padding: 20px;
-  background: #000;
+  padding: 20px 0;
+  background: rgba(0,0,0,0.05);
+  color: #333;
   font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #111;
 }
 
 footer a {
-  color: #666;
+  color: #333;
   text-decoration: none;
-  margin: 0 8px;
+  margin: 0 10px;
 }
 
 footer a:hover {
-  color: #fff;
   text-decoration: underline;
 }
