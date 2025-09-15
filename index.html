@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>FullStack Enterprise</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fullstack Enterprise</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: rgba(0, 0, 0, 0.05);
+      font-size: 0.9rem;
+      color: #333;
+    }
+    footer a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Basic form container (we'll polish CSS later) */
+    .contact-container {
+      margin-top: 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .contact-container label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .contact-container input,
+    .contact-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .contact-container button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      background: #007bff;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .contact-container button:hover {
+      background: #0056b3;
+    }
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to FullStack Enterprise</h1>
-  <p>This is the homepage.</p>
+  <header>
+    <nav class="navbar">
+      <div class="logo">FullstackEnterprise</div>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h1>Welcome to Fullstack Enterprise</h1>
+    <p>Your gateway to high-value skill-based courses and professional training.</p>
+
+    <!-- Contact Form / Lead Capture -->
+    <div class="contact-container">
+      <h2>Sign up or Send a Message</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+      <div id="status"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      <a href="/privacy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms of Service</a>
+    </p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusDiv.textContent = "Sending...";
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+
+      try {
+        const res = await fetch('https://marketing-api.tyriqnallen.workers.dev/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        console.log('Worker response:', result);
+
+        statusDiv.textContent = result.success
+          ? "Thank you! We've received your message."
+          : "Error: " + JSON.stringify(result);
+
+        statusDiv.style.color = result.success ? 'green' : 'red';
+
+        if (result.success) form.reset();
+      } catch (err) {
+        console.error('Fetch error:', err);
+        statusDiv.textContent = 'Fetch error: ' + err.message;
+        statusDiv.style.color = 'red';
+      }
+    });
+  </script>
 </body>
 </html>
