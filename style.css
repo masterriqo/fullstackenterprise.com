@@ -1,4 +1,4 @@
-/* Reset styles */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,16 +6,17 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #000; /* black background */
-  color: #fff;             /* white text */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #000;
+  color: #fff;
   line-height: 1.6;
 }
 
+/* Header + Nav */
 header {
-  background-color: #000;
+  background: #000;
   padding: 20px 40px;
-  box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+  box-shadow: 0 2px 4px rgba(255,255,255,0.05);
 }
 
 .navbar {
@@ -26,31 +27,30 @@ header {
 
 .logo {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: bold;
   color: #fff;
 }
 
 .nav-links {
   list-style: none;
-  display: flex;       /* horizontal menu */
-  gap: 30px;           /* space between menu items */
+  display: flex;
+  gap: 30px;
 }
 
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
-  font-size: 1rem;
   transition: color 0.2s ease;
 }
 
-.nav-links li a:hover {
-  color: #999;
+.nav-links a:hover {
+  color: #aaa;
 }
 
 /* Hero Section */
 .hero {
-  padding: 80px 40px;
+  padding: 100px 40px 60px;
   text-align: center;
 }
 
@@ -58,95 +58,103 @@ header {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #fff;
 }
 
 .hero p {
   font-size: 1.25rem;
   color: #ccc;
-  margin-bottom: 40px;
 }
 
-/* Contact Form */
-.contact-container {
+/* Call-to-action / Form section */
+.cta {
   max-width: 600px;
-  margin: 40px auto 80px auto;
-  background-color: #111; /* slightly lighter than black */
+  margin: 0 auto;
+  background: #111;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
-.contact-container h2 {
-  text-align: center;
+.cta h2 {
+  font-size: 1.75rem;
   margin-bottom: 20px;
-  font-size: 2rem;
-  color: #fff;
+  text-align: center;
 }
 
-.contact-container label {
-  display: block;
-  margin-top: 15px;
-  color: #ccc;
-  font-weight: 500;
+.cta form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.contact-container input,
-.contact-container textarea {
-  width: 100%;
+.cta input,
+.cta textarea,
+.cta button {
   padding: 12px;
-  margin-top: 5px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background-color: #000;
-  color: #fff;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
 }
 
-.contact-container input::placeholder,
-.contact-container textarea::placeholder {
+.cta input,
+.cta textarea {
+  background: #222;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.cta input::placeholder,
+.cta textarea::placeholder {
   color: #777;
 }
 
-.contact-container button {
-  margin-top: 20px;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  background-color: #007bff;
+.cta input:focus,
+.cta textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.cta button {
+  background: #007bff;
   color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.contact-container button:hover {
-  background-color: #0056b3;
-}
-
-#status {
-  margin-top: 15px;
   font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cta button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.cta button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+/* Form Response */
+#form-response {
+  margin-top: 10px;
+  font-size: 0.95rem;
   text-align: center;
-  color: #0f0; /* success color */
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 20px 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: #000;
   font-size: 0.9rem;
-  color: #ccc;
+  color: #666;
+  border-top: 1px solid #111;
 }
 
 footer a {
-  color: #ccc;
+  color: #666;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 8px;
 }
 
 footer a:hover {
+  color: #fff;
   text-decoration: underline;
 }
