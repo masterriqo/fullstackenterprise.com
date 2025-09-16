@@ -6,7 +6,7 @@
   <title>FullStack Enterprise</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Inline helper styling — can move to style.css */
+    /* Inline helper CSS */
     .cta {
       display: flex;
       align-items: flex-start;
@@ -32,14 +32,59 @@
       padding: 0.75rem;
       font-size: 1rem;
     }
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section-headline {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .section-subheadline {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 2rem;
+      margin-bottom: 2rem;
+    }
+    .three-step {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .step {
+      flex: 1 1 30%;
+      background: #f4f4f4;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
     @media (max-width: 768px) {
-      .cta {
+      .cta, .three-step {
         flex-direction: column;
       }
+    }
+    .btn-primary {
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      background-color: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .btn-primary:hover {
+      background-color: #005bb5;
     }
   </style>
 </head>
 <body>
+
   <header>
     <nav class="navbar">
       <div class="logo">FullStack Enterprise</div>
@@ -51,21 +96,20 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Welcome to FullStack Enterprise</h1>
-    <p>Build skills. Build freedom. Build your future.</p>
+    <h1>Build Your Full-Stack Business. Master Every Layer.</h1>
+    <p>Fullstack Enterprise empowers solopreneurs and one-person businesses with the tools, knowledge, and systems to run a business like a full-stack enterprise — marketing, finance, operations, content, and personal growth, all aligned for purpose and independence.</p>
   </section>
 
+  <!-- Top CTA with Side-by-Side Form -->
   <section class="cta">
-    <!-- Left side: subheadline -->
     <div class="cta-content">
       <h2>Join Our Newsletter</h2>
-      <p>
-        Build your full-stack business. Master marketing, operations, finance, and personal growth — everything you need to run a one-person enterprise.
-      </p>
+      <p>Build your full-stack business with actionable insights, frameworks, and systems for marketing, finance, operations, content creation, and personal growth.</p>
+      <button class="btn-primary">Join the Waitlist / Start Building Today</button>
     </div>
 
-    <!-- Right side: form -->
     <div class="cta-form">
       <form id="lead-form">
         <!-- Hidden UTM fields -->
@@ -83,6 +127,82 @@
     </div>
   </section>
 
+  <!-- What We Do -->
+  <section>
+    <h2 class="section-headline">A Complete Platform for Entrepreneurial Mastery</h2>
+    <ul>
+      <li><strong>Research & Knowledge:</strong> Access actionable insights across finance, marketing, AI, operations, and productivity.</li>
+      <li><strong>Education & Training:</strong> Courses, guides, and frameworks to develop real-world skills and grow your business.</li>
+      <li><strong>Marketing & Sales Mastery:</strong> Build multi-channel campaigns, optimize funnels, leverage SEO, email, PPC, and social media.</li>
+      <li><strong>Operational Systems:</strong> Learn full-stack management principles for your one-person or small team business.</li>
+      <li><strong>Content & Product Creation:</strong> Plan, produce, and distribute content that generates revenue and builds authority.</li>
+      <li><strong>Lifestyle & Personal Growth:</strong> Increase efficiency, sovereignty, and purpose-driven productivity.</li>
+    </ul>
+  </section>
+
+  <!-- How It Works -->
+  <section>
+    <h2 class="section-headline">Run Your Business Like a Full-Stack System</h2>
+    <div class="three-step">
+      <div class="step">
+        <h3>Learn & Plan</h3>
+        <p>Understand every layer of your business and set a clear, measurable roadmap.</p>
+      </div>
+      <div class="step">
+        <h3>Build & Execute</h3>
+        <p>Implement systems in marketing, finance, operations, and content.</p>
+      </div>
+      <div class="step">
+        <h3>Optimize & Scale</h3>
+        <p>Analyze results, reinvest in growth, and refine your processes for independence and impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why FullStack Enterprise -->
+  <section>
+    <h2 class="section-headline">Your One-Person Business, Fully Realized</h2>
+    <ul>
+      <li><strong>Multi-Layer Support:</strong> From marketing to finance to personal growth, all in one platform.</li>
+      <li><strong>Proven Frameworks:</strong> Apply actionable, practical strategies used by successful solopreneurs.</li>
+      <li><strong>Community & Guidance:</strong> Connect with other one-person businesses and gain mentorship through courses and consultations.</li>
+      <li><strong>Purpose-Driven Growth:</strong> Align business success with your vision, faith, and personal mission.</li>
+    </ul>
+  </section>
+
+  <!-- Modules Overview -->
+  <section>
+    <h2 class="section-headline">Modules & Training Overview</h2>
+    <ul>
+      <li><strong>Full-stack marketing:</strong> SEO, funnels, PPC, email, content.</li>
+      <li><strong>Operational mastery:</strong> Systems, AI, research, automation.</li>
+      <li><strong>Finance & monetization:</strong> Planning, reinvestment, ROI.</li>
+      <li><strong>Productivity & lifestyle:</strong> Efficiency, gamification, sovereignty, personal growth.</li>
+    </ul>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Start Building Your Full-Stack Enterprise Today</h2>
+      <button class="btn-primary">Join the Waitlist</button>
+    </div>
+
+    <div class="cta-form">
+      <form id="lead-form-bottom">
+        <input type="hidden" name="utm_source" id="utm_source_bottom">
+        <input type="hidden" name="utm_medium" id="utm_medium_bottom">
+        <input type="hidden" name="utm_campaign" id="utm_campaign_bottom">
+        <input type="hidden" name="utm_content" id="utm_content_bottom">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit" id="submit-btn-bottom">Join the Waitlist</button>
+      </form>
+      <p id="form-response-bottom"></p>
+    </div>
+  </section>
+
   <footer>
     <p>
       <a href="/privacy.html">Privacy Policy</a> | 
@@ -90,55 +210,60 @@
     </p>
   </footer>
 
+  <!-- Lead Form Script -->
   <script>
   (function() {
-    const form = document.getElementById("lead-form");
-    const btn = document.getElementById("submit-btn");
-    const response = document.getElementById("form-response");
+    function setupForm(formId, btnId, responseId) {
+      const form = document.getElementById(formId);
+      const btn = document.getElementById(btnId);
+      const response = document.getElementById(responseId);
 
-    // Populate hidden UTM fields from URL or localStorage
-    const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
-    const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
-    utmKeys.forEach(key => {
-      const value = params[key] || localStorage.getItem(key) || "";
-      document.getElementById(key).value = value;
-      if (params[key]) localStorage.setItem(key, params[key]);
-    });
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
+      utmKeys.forEach(key => {
+        const value = params[key] || localStorage.getItem(key) || "";
+        const field = document.getElementById(key + (formId.includes("bottom") ? "_bottom" : ""));
+        if (field) field.value = value;
+        if (params[key]) localStorage.setItem(key, params[key]);
+      });
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.innerText = "Submitting...";
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Submitting...";
 
-      const formData = Object.fromEntries(new FormData(form).entries());
-      formData.page_url = window.location.href;
+        const formData = Object.fromEntries(new FormData(form).entries());
+        formData.page_url = window.location.href;
 
-      try {
-        const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await res.json();
-        if (result.success) {
-          response.innerText = "✅ Thanks for subscribing!";
-          response.style.color = "green";
-          form.reset();
-        } else {
-          response.innerText = "❌ Something went wrong. Try again.";
+        try {
+          const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          });
+          const result = await res.json();
+          if(result.success){
+            response.innerText = "✅ Thanks for subscribing!";
+            response.style.color = "green";
+            form.reset();
+          } else {
+            response.innerText = "❌ Something went wrong. Try again.";
+            response.style.color = "red";
+            console.error("Worker error:", result);
+          }
+        } catch(err) {
+          response.innerText = "❌ Network error. Try again.";
           response.style.color = "red";
-          console.error("Worker error:", result);
+          console.error("Fetch error:", err);
+        } finally {
+          btn.disabled = false;
+          btn.innerText = btnId.includes("bottom") ? "Join the Waitlist" : "Subscribe";
         }
-      } catch (err) {
-        response.innerText = "❌ Network error. Try again.";
-        response.style.color = "red";
-        console.error("Fetch error:", err);
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "Subscribe";
-      }
-    });
+      });
+    }
+
+    setupForm("lead-form","submit-btn","form-response");
+    setupForm("lead-form-bottom","submit-btn-bottom","form-response-bottom");
   })();
   </script>
 </body>
