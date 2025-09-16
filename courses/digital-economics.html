@@ -121,7 +121,7 @@
       const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
 
       utmKeys.forEach(key => {
-        const field = document.getElementById(utmPrefix + key);
+        const field = document.getElementById(key + (utmPrefix ? "_" + utmPrefix : ""));
         const value = params[key] || localStorage.getItem(key) || "";
         field.value = value;
         if (params[key]) localStorage.setItem(key, params[key]);
@@ -162,8 +162,10 @@
         }
       });
     }
+    // First form: normal IDs
     initForm("lead-form", "submit-btn", "form-response");
-    initForm("lead-form-2", "submit-btn-2", "form-response-2", "2_");
+    // Second form: suffix _2 in the IDs
+    initForm("lead-form-2", "submit-btn-2", "form-response-2", "2");
   })();
   </script>
 </body>
