@@ -5,6 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FullStack Enterprise</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Inline helper styling — can move to style.css */
+    .cta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 2rem auto;
+      max-width: 1000px;
+      padding: 2rem;
+    }
+    .cta-content {
+      flex: 1 1 45%;
+    }
+    .cta-form {
+      flex: 1 1 45%;
+    }
+    .cta-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cta-form input, .cta-form button {
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+      .cta {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -24,20 +57,30 @@
   </section>
 
   <section class="cta">
-    <h2>Join Our Newsletter</h2>
-    <form id="lead-form">
-      <!-- Hidden UTM fields -->
-      <input type="hidden" name="utm_source" id="utm_source">
-      <input type="hidden" name="utm_medium" id="utm_medium">
-      <input type="hidden" name="utm_campaign" id="utm_campaign">
-      <input type="hidden" name="utm_content" id="utm_content">
+    <!-- Left side: subheadline -->
+    <div class="cta-content">
+      <h2>Join Our Newsletter</h2>
+      <p>
+        Build your full-stack business. Master marketing, operations, finance, and personal growth — everything you need to run a one-person enterprise.
+      </p>
+    </div>
 
-      <!-- Visible fields -->
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit" id="submit-btn">Subscribe</button>
-    </form>
-    <p id="form-response"></p>
+    <!-- Right side: form -->
+    <div class="cta-form">
+      <form id="lead-form">
+        <!-- Hidden UTM fields -->
+        <input type="hidden" name="utm_source" id="utm_source">
+        <input type="hidden" name="utm_medium" id="utm_medium">
+        <input type="hidden" name="utm_campaign" id="utm_campaign">
+        <input type="hidden" name="utm_content" id="utm_content">
+
+        <!-- Visible fields -->
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit" id="submit-btn">Subscribe</button>
+      </form>
+      <p id="form-response"></p>
+    </div>
   </section>
 
   <footer>
@@ -68,8 +111,6 @@
       btn.innerText = "Submitting...";
 
       const formData = Object.fromEntries(new FormData(form).entries());
-
-      // Include page URL for worker to read pagePath + UTMs
       formData.page_url = window.location.href;
 
       try {
