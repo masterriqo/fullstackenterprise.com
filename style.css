@@ -1,4 +1,6 @@
-/* Reset */
+/* ==============================
+   RESET
+============================== */
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +13,11 @@ html, body {
   background: #000;
   color: #fff;
   line-height: 1.6;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Header + Nav */
+/* ==============================
+   HEADER + NAV
+============================== */
 header {
   background: #000;
   padding: 20px 40px;
@@ -51,13 +53,14 @@ header {
   color: #aaa;
 }
 
-/* Main Hero Section */
-main.hero {
-  flex: 1; /* fill remaining space to push footer down */
+/* ==============================
+   HERO
+============================== */
+.hero {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical center */
-  align-items: center;     /* horizontal center */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 80px 40px;
 }
@@ -73,13 +76,47 @@ main.hero {
   color: #ccc;
 }
 
-/* Call-to-action / Form section */
+/* ==============================
+   SECTIONS
+============================== */
+section {
+  padding: 60px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.course-overview ul,
+.modules ul,
+.tools ul,
+.pricing ul,
+.outcomes ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.modules ul li,
+.course-overview ul li,
+.tools ul li,
+.pricing ul li,
+.outcomes ul li {
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* ==============================
+   CALL-TO-ACTION / FORMS
+============================== */
 .cta {
   width: 100%;
   max-width: 600px;
   background: #111;
   padding: 30px;
-  margin-top: 40px;
+  margin: 40px auto;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
   text-align: center;
@@ -139,15 +176,19 @@ main.hero {
   cursor: not-allowed;
 }
 
-/* Form Response */
-#form-response {
+/* Form Response - supports multiple forms */
+#form-response,
+#form-response-top,
+#form-response-bottom {
   margin-top: 15px;
   font-weight: bold;
   font-size: 0.95rem;
   text-align: center;
 }
 
-/* Footer */
+/* ==============================
+   FOOTER
+============================== */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -164,4 +205,26 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
 }
