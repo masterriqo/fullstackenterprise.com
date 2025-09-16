@@ -39,7 +39,18 @@
     </form>
     <p id="form-response-top"></p>
   </section>
+    <form id="lead-form-top">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
 
+      <!-- Hidden UTM Fields -->
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+
+      <button type="submit" id="submit-btn-top">Join the Waitlist</button>
+    </form>
   <!-- Modules Section -->
   <section class="modules">
     <h2>Course Modules</h2>
