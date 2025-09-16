@@ -186,6 +186,19 @@ h2 {
   text-align: center;
 }
 
+.how-it-works {
+  background-color: #000; /* black background */
+  color: #fff; /* white text */
+  padding: 3rem 2rem;
+  border-radius: 8px;
+}
+
+.how-it-works .step {
+  background-color: #111; /* slightly lighter black for contrast */
+  color: #fff;
+}
+
+
 /* ==============================
    CALL-TO-ACTION / FORMS
 ============================== */
