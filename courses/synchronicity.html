@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synchronicity: Explore Meaningful Coincidences | FullStack Enterprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">FullStack Enterprise</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Synchronicity</h1>
+    <p>Explore meaningful coincidences, patterns, and the hidden connections in your life.</p>
+  </section>
+
+  <!-- Lead Capture Form -->
+  <section class="cta">
+    <h2>Subscribe for Synchronicity Insights</h2>
+    <form id="lead-form">
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn">Subscribe</button>
+    </form>
+    <p id="form-response"></p>
+  </section>
+
+  <!-- Sections -->
+  <section class="course-overview">
+    <h2>I. Introduction</h2>
+    <ul>
+      <li><strong>Definition of Synchronicities:</strong> Carl Jung’s concept, examples, significance.</li>
+      <li><strong>Importance in Daily Life:</strong> Impact on decisions, intuition, personal transformation.</li>
+      <li><strong>Purpose of the Website:</strong> Community, resources, and exploration.</li>
+    </ul>
+
+    <h2>II. Exploring Synchronicities</h2>
+    <ul>
+      <li><strong>Types:</strong> Meaningful coincidences, symbolic patterns, serendipity, numbers, animal, and relationship synchronicities.</li>
+      <li><strong>Historical Perspectives:</strong> Jung, cultural and spiritual interpretations, notable examples.</li>
+      <li><strong>Personal Experiences:</strong> User stories, testimonials, variability in interpretation.</li>
+    </ul>
+
+    <h2>III. Understanding the Phenomenon</h2>
+    <ul>
+      <li><strong>Psychological Perspectives:</strong> Jungian psychology, cognitive science, mental well-being.</li>
+      <li><strong>Metaphysical & Spiritual:</strong> Spiritual connection, New Age practices, awareness exercises.</li>
+      <li><strong>Scientific Inquiry:</strong> Quantum entanglement, parapsychology, ongoing studies.</li>
+    </ul>
+
+    <h2>IV. Tools and Resources</h2>
+    <ul>
+      <li><strong>Journaling:</strong> Prompts, digital tools, self-reflection.</li>
+      <li><strong>Symbolism Databases:</strong> Recommended websites, personal databases, cultural variations.</li>
+      <li><strong>Recommended Reading:</strong> Books, academic articles, community suggestions.</li>
+    </ul>
+
+    <h2>V. Community and Interaction</h2>
+    <ul>
+      <li><strong>Forum:</strong> Discussion threads, moderated Q&A, virtual meet-ups.</li>
+      <li><strong>Social Media:</strong> Sharing stories, engaging with community, exclusive content.</li>
+    </ul>
+
+    <h2>VI. Practical Applications</h2>
+    <ul>
+      <li><strong>Self-Reflection:</strong> Guided prompts, daily routines, personal growth tracking.</li>
+      <li><strong>Interpreting Synchronicities:</strong> Avoid pitfalls, expert consultation, personal frameworks.</li>
+      <li><strong>Integration into Life:</strong> Mindful strategies, rituals, sharing experiences.</li>
+    </ul>
+
+    <h2>VII. Events and Workshops</h2>
+    <ul>
+      <li>Online workshops, guest speakers, participant testimonials.</li>
+      <li>Webinars with experts, interactive Q&A, upcoming access.</li>
+      <li>Calendar of events, community submissions, virtual/in-person details.</li>
+    </ul>
+
+    <h2>VIII. FAQ Section</h2>
+    <ul>
+      <li>Common questions answered psychologically, spiritually, and scientifically.</li>
+      <li>Expert insights, user-submitted questions, video responses.</li>
+    </ul>
+
+    <h2>IX. Connect with Professionals</h2>
+    <ul>
+      <li>Directory of experts, reviews, contact info.</li>
+      <li>Consultation services, booking, testimonials.</li>
+      <li>Workshops and training programs, detailed descriptions, success stories.</li>
+    </ul>
+
+    <h2>X. Contact and Feedback</h2>
+    <ul>
+      <li>Contact information: email, social media, contact form.</li>
+      <li>Feedback form: suggestions, acknowledgment, response.</li>
+      <li>User-driven website improvements: polls, feature requests, discussions.</li>
+    </ul>
+
+    <h2>XI. Conclusion</h2>
+    <ul>
+      <li>Summary of key points, highlights, continued engagement invitation.</li>
+      <li>Encouragement for continued exploration, success stories, future plans.</li>
+      <li>Call to action: share experiences, join events, subscribe to newsletter.</li>
+    </ul>
+  </section>
+
+  <!-- Lead Capture Form at Bottom -->
+  <section class="cta">
+    <h2>Stay Updated on Synchronicity Insights</h2>
+    <form id="lead-form">
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn">Subscribe</button>
+    </form>
+    <p id="form-response"></p>
+  </section>
+
+  <footer>
+    <p>
+      <a href="/privacy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms of Service</a>
+    </p>
+  </footer>
+
+  <!-- Lead Form Script -->
+  <script>
+  (function() {
+    const form = document.getElementById("lead-form");
+    const btn = document.getElementById("submit-btn");
+    const response = document.getElementById("form-response");
+
+    const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+    const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
+    utmKeys.forEach(key => {
+      const value = params[key] || localStorage.getItem(key) || "";
+      document.getElementById(key).value = value;
+      if (params[key]) localStorage.setItem(key, params[key]);
+    });
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.innerText = "Submitting...";
+
+      const formData = Object.fromEntries(new FormData(form).entries());
+      formData.page_url = window.location.href;
+
+      try {
+        const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await res.json();
+        if (result.success) {
+          response.innerText = "✅ Thanks for subscribing!";
+          response.style.color = "green";
+          form.reset();
+        } else {
+          response.innerText = "❌ Something went wrong. Try again.";
+          response.style.color = "red";
+          console.error("Worker error:", result);
+        }
+      } catch (err) {
+        response.innerText = "❌ Network error. Try again.";
+        response.style.color = "red";
+        console.error("Fetch error:", err);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Subscribe";
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
