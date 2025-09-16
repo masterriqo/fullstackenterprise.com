@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DGTLECON:201 | Digital Economics | FullStack Enterprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">FullStack Enterprise</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>DGTLECON:201</h1>
+    <p>Break the Old Script. Learn to Play the New Game.</p>
+  </section>
+
+  <!-- Lead Capture -->
+  <section class="cta">
+    <h2>Subscribe for Digital Economics Updates</h2>
+    <form id="lead-form">
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn">Subscribe</button>
+    </form>
+    <p id="form-response"></p>
+  </section>
+
+  <!-- Course Outline -->
+  <section class="course-overview">
+    <h2>Course Outline</h2>
+
+    <h3>Module 1: History & Context</h3>
+    <ul>
+      <li>Why the “get a second job” advice used to work.</li>
+      <li>Wages, pensions, and dollar strength then vs now.</li>
+      <li>Show the math: 1960s vs 2025 household economics.</li>
+      <li>Conclusion: the rules changed.</li>
+    </ul>
+
+    <h3>Module 2: Economics for Survival</h3>
+    <ul>
+      <li>Liabilities vs assets.</li>
+      <li>The cap of time-for-money work.</li>
+      <li>Leverage used by corporations & wealthy individuals.</li>
+      <li>The consumerism trap.</li>
+    </ul>
+
+    <h3>Module 3: The Digital Shift</h3>
+    <ul>
+      <li>Information is free, skills are democratized.</li>
+      <li>Remote work, creator economy, automation.</li>
+      <li>Your laptop = more powerful than a factory.</li>
+    </ul>
+
+    <h3>Module 4: The New Pathways</h3>
+    <ul>
+      <li>Education 2.0: certifications & micro-learning.</li>
+      <li>Building a portfolio (GitHub, blog, YouTube, etc.).</li>
+      <li>Direct selling: freelance, consulting, courses.</li>
+      <li>Incorporating yourself as a business.</li>
+    </ul>
+
+    <h3>Module 5: Practical Implementation</h3>
+    <ul>
+      <li>Cutting liabilities & wasted time.</li>
+      <li>Investing in internet, skills, and scalable tools.</li>
+      <li>First leverage moves: services, products, automation.</li>
+      <li>Scaling: $300 → $3,000 online strategies.</li>
+    </ul>
+
+    <h3>Module 6: Liberation</h3>
+    <ul>
+      <li>Redefining leisure & time freedom.</li>
+      <li>True liberty in the 21st century.</li>
+      <li>Reframing risk: the danger of staying trapped.</li>
+    </ul>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <h2>Join the Digital Economics Revolution</h2>
+    <form id="lead-form-2">
+      <input type="hidden" name="utm_source" id="utm_source_2">
+      <input type="hidden" name="utm_medium" id="utm_medium_2">
+      <input type="hidden" name="utm_campaign" id="utm_campaign_2">
+      <input type="hidden" name="utm_content" id="utm_content_2">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn-2">Subscribe</button>
+    </form>
+    <p id="form-response-2"></p>
+  </section>
+
+  <footer>
+    <p><a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+  </footer>
+
+  <!-- Lead Form Script -->
+  <script>
+  (function() {
+    function initForm(formId, btnId, respId, utmPrefix = "") {
+      const form = document.getElementById(formId);
+      const btn = document.getElementById(btnId);
+      const resp = document.getElementById(respId);
+
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
+
+      utmKeys.forEach(key => {
+        const field = document.getElementById(utmPrefix + key);
+        const value = params[key] || localStorage.getItem(key) || "";
+        field.value = value;
+        if (params[key]) localStorage.setItem(key, params[key]);
+      });
+
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Submitting...";
+
+        const formData = Object.fromEntries(new FormData(form).entries());
+        formData.page_url = window.location.href;
+        formData.tags = ["digital-economics", "free_course"];
+
+        try {
+          const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          });
+          const result = await res.json();
+          if (result.success) {
+            resp.innerText = "✅ Thanks for subscribing!";
+            resp.style.color = "green";
+            form.reset();
+          } else {
+            resp.innerText = "❌ Something went wrong. Try again.";
+            resp.style.color = "red";
+            console.error(result);
+          }
+        } catch (err) {
+          resp.innerText = "❌ Network error. Try again.";
+          resp.style.color = "red";
+          console.error(err);
+        } finally {
+          btn.disabled = false;
+          btn.innerText = "Subscribe";
+        }
+      });
+    }
+    initForm("lead-form", "submit-btn", "form-response");
+    initForm("lead-form-2", "submit-btn-2", "form-response-2", "2_");
+  })();
+  </script>
+</body>
+</html>
