@@ -1,39 +1,196 @@
-<a href="/courses/digital-economics.html">
-  <div class="course-card">
-    <h3>DGTLECON:201</h3>
-    <p>Break the Old Script. Learn to Play the New Game.</p>
-  </div>
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses | FullStack Enterprise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    html, body {
+      height: 100%;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+    }
 
-<a href="/courses/digital-marketing.html">
-  <div class="course-card">
-    <h3>MASTER DGTLMKTG:101</h3>
-    <p>Conquer the Digital Battlefield—Turn Clicks into Cash.</p>
-  </div>
-</a>
+    /* Header + Nav */
+    header {
+      background: #000;
+      padding: 20px 40px;
+      box-shadow: 0 2px 4px rgba(255,255,255,0.05);
+    }
 
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-<a href="/courses/monks2masters.html">
-  <div class="course-card">
-    <h3>MNKS2MSTRS:301</h3>
-    <p>Subconscious Reconditioning, Character Development & Systemized Execution</p>
-  </div>
-</a>
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
 
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
 
-<a href="/courses/meta-learning.html">
-  <div class="course-card">
-    <h3>META-LRNG</h3>
-    <p>Master any subject, overcome mental resistance, and foster lifelong learning.</p>
-  </div>
-</a>
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
 
+    .nav-links a:hover {
+      color: #007bff;
+    }
 
-<a href="/courses/synchronicity.html">
-  <div class="course-card">
-    <h3>Synchronicity</h3>
-    <p>Explore meaningful coincidences, patterns, and hidden connections in life.</p>
-  </div>
-</a>
+    /* Main Section */
+    main {
+      flex: 1;
+      padding: 60px 40px;
+    }
 
+    h1, h2, h3 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* Courses Grid */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* Course Cards */
+    .course-card {
+      background: #111;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .course-card h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .course-card p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Hover Effect */
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Links wrapping cards */
+    .courses-grid a, .courses-grid a:visited {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: rgba(0,0,0,0.05);
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">FullStack Enterprise</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Our Courses</h1>
+    <div class="courses-grid">
+      <a href="/courses/digital-economics.html">
+        <div class="course-card">
+          <h3>DGTLECON:201</h3>
+          <p>Break the Old Script. Learn to Play the New Game.</p>
+        </div>
+      </a>
+
+      <a href="/courses/digital-marketing.html">
+        <div class="course-card">
+          <h3>MASTER DGTLMKTG:101</h3>
+          <p>Conquer the Digital Battlefield—Turn Clicks into Cash.</p>
+        </div>
+      </a>
+
+      <a href="/courses/monks2masters.html">
+        <div class="course-card">
+          <h3>MNKS2MSTRS:301</h3>
+          <p>Subconscious Reconditioning, Character Development & Systemized Execution</p>
+        </div>
+      </a>
+
+      <a href="/courses/meta-learning.html">
+        <div class="course-card">
+          <h3>META-LRNG</h3>
+          <p>Master any subject, overcome mental resistance, and foster lifelong learning.</p>
+        </div>
+      </a>
+
+      <a href="/courses/synchronicity.html">
+        <div class="course-card">
+          <h3>Synchronicity</h3>
+          <p>Explore meaningful coincidences, patterns, and hidden connections in life.</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      <a href="/privacy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms of Service</a>
+    </p>
+  </footer>
+
+</body>
+</html>
