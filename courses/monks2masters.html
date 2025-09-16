@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNKS2MSTRS:301 – Subconscious Reconditioning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">FullStack Enterprise</div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>MNKS2MSTRS:301 — Subconscious Reconditioning, Character Development & Systemized Execution</h1>
+    <p>Rewire your subconscious. Install new systems. Execute relentlessly.</p>
+
+    <!-- Lead Capture Form Top -->
+    <form id="lead-form-top">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+
+      <!-- Hidden UTM Fields -->
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+
+      <button type="submit" id="submit-btn-top">Join the Waitlist</button>
+    </form>
+    <p id="form-response-top"></p>
+  </section>
+
+  <!-- Modules Section -->
+  <section class="modules">
+    <h2>Course Modules</h2>
+    <ul>
+      <li>Module 1: Destroy the Old Self & Install the New</li>
+      <li>Module 2: Strategic Execution & Decision-Making</li>
+      <li>Module 3: Metaphysics, Synchronicity & Reality Engineering</li>
+      <li>Module 4: Psychological Warfare & Influence</li>
+      <li>Module 5: Wealth, Business & Strategic Power Moves</li>
+      <li>Module 6: Synthesis & Final Execution</li>
+    </ul>
+  </section>
+
+  <!-- Call to Action / Bottom Form -->
+  <section class="cta">
+    <h2>Ready to Recondition, Evolve, Execute?</h2>
+    <form id="lead-form-bottom">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+
+      <!-- Hidden UTM Fields -->
+      <input type="hidden" name="utm_source" id="utm_source_bottom">
+      <input type="hidden" name="utm_medium" id="utm_medium_bottom">
+      <input type="hidden" name="utm_campaign" id="utm_campaign_bottom">
+      <input type="hidden" name="utm_content" id="utm_content_bottom">
+
+      <button type="submit" id="submit-btn-bottom">Join the Waitlist</button>
+    </form>
+    <p id="form-response-bottom"></p>
+  </section>
+
+  <footer>
+    <p>
+      <a href="/privacy.html">Privacy Policy</a> |
+      <a href="/terms.html">Terms of Service</a>
+    </p>
+  </footer>
+
+  <!-- JS: UTM + Async Submission -->
+  <script>
+    (function() {
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
+
+      utmKeys.forEach(key => {
+        const value = params[key] || localStorage.getItem(key) || "";
+        const topField = document.getElementById(key);
+        const bottomField = document.getElementById(key + "_bottom");
+        if(topField) topField.value = value;
+        if(bottomField) bottomField.value = value;
+        if(params[key]) localStorage.setItem(key, params[key]);
+      });
+
+      function setupForm(formId, btnId, responseId) {
+        const form = document.getElementById(formId);
+        const btn = document.getElementById(btnId);
+        const response = document.getElementById(responseId);
+
+        form.addEventListener("submit", async function(e) {
+          e.preventDefault();
+          btn.disabled = true;
+          btn.innerText = "Submitting...";
+
+          const formData = Object.fromEntries(new FormData(form).entries());
+          formData.page_url = window.location.href;
+
+          try {
+            const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData)
+            });
+            const result = await res.json();
+            if(result.success){
+              response.innerText = "✅ Thanks for subscribing!";
+              response.style.color = "green";
+              form.reset();
+            } else {
+              response.innerText = "❌ Something went wrong. Try again.";
+              response.style.color = "red";
+              console.error("Worker error:", result);
+            }
+          } catch(err) {
+            response.innerText = "❌ Network error. Try again.";
+            response.style.color = "red";
+            console.error("Fetch error:", err);
+          } finally {
+            btn.disabled = false;
+            btn.innerText = "Join the Waitlist";
+          }
+        });
+      }
+
+      setupForm("lead-form-top","submit-btn-top","form-response-top");
+      setupForm("lead-form-bottom","submit-btn-bottom","form-response-bottom");
+    })();
+  </script>
+
+</body>
+</html>
