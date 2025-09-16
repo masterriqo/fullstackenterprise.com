@@ -196,6 +196,9 @@ h2 {
 .how-it-works .step {
   background-color: #111; /* slightly lighter black for contrast */
   color: #fff;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
 
 
