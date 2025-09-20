@@ -60,18 +60,19 @@
         <p>SEO, PPC, social media, and content marketing strategies to grow your brand online.</p>
       </a>
 
+      <!-- Card 5 -->
       <a href="/services/web-development.html" class="course-card">
         <h3>Web Development</h3>
         <p>Custom websites, e-commerce, SEO setup, and ongoing maintenance tailored to your brand.</p>
       </a>
       
-      <!-- Card 5 -->
+      <!-- Card 6 -->
       <a href="/services/copywriting.html" class="course-card">
         <h3>Copywriting</h3>
         <p>Engaging website copy, emails, and ad content that converts and builds your brand voice.</p>
       </a>
 
-      <!-- Card 6 -->
+      <!-- Card 7 -->
       <a href="/services/career-development.html" class="course-card">
         <h3>Career Development</h3>
         <p>Coaching, assessments, and personalized strategies to accelerate professional growth.</p>
@@ -84,10 +85,14 @@
   ============================== -->
   <section class="cta">
     <h2>Get Started Today</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Tell us what you need..." rows="4"></textarea>
+    <form id="lead-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell us what you need..." rows="4"></textarea>
+
+      <!-- Hidden field for source attribution -->
+      <input type="hidden" name="source" id="form-source">
+
       <button type="submit">Request a Consultation</button>
       <div id="form-response"></div>
     </form>
@@ -103,6 +108,14 @@
       <a href="#">Terms of Service</a>
     </p>
   </footer>
+
+  <!-- ==============================
+       SCRIPT
+  ============================== -->
+  <script>
+    // Auto-fill source field with the page path
+    document.getElementById("form-source").value = window.location.pathname;
+  </script>
 
 </body>
 </html>
