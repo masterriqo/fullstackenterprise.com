@@ -75,6 +75,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
+      margin-bottom: 40px;
     }
 
     /* Course Cards */
@@ -110,6 +111,51 @@
       text-decoration: none;
       color: inherit;
       display: block;
+    }
+
+    /* Lead Form (CTA) */
+    .cta {
+      background: #111;
+      padding: 40px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+
+    .cta h2 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input, form textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    form button {
+      padding: 12px;
+      background: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #0056b3;
+    }
+
+    #form-response {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #ccc;
     }
 
     /* Footer */
@@ -183,6 +229,22 @@
         </div>
       </a>
     </div>
+
+    <!-- CTA Lead Form -->
+    <section class="cta">
+      <h2>Get Started Today</h2>
+      <form id="lead-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Tell us what you need..." rows="4"></textarea>
+
+        <!-- Hidden field for source attribution -->
+        <input type="hidden" name="source" id="form-source">
+
+        <button type="submit">Join the Waitlist</button>
+        <div id="form-response"></div>
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -191,6 +253,12 @@
       <a href="/terms.html">Terms of Service</a>
     </p>
   </footer>
+
+  <!-- Script -->
+  <script>
+    // Auto-fill hidden source field with page path
+    document.getElementById("form-source").value = window.location.pathname;
+  </script>
 
 </body>
 </html>
