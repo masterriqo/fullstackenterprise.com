@@ -74,6 +74,7 @@ header {
 .hero p {
   font-size: 1.25rem;
   color: #ccc;
+  margin-bottom: 30px;
 }
 
 /* ==============================
@@ -280,6 +281,34 @@ h2 {
 }
 
 /* ==============================
+   PRESALE BUTTON (match newsletter CTA)
+============================== */
+#presale-btn {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: #007bff;
+  color: #fff;
+  transition: background 0.2s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto 0 auto;
+  display: block;
+}
+
+#presale-btn:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+#presale-btn:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+/* ==============================
    FOOTER
 ============================== */
 footer {
@@ -323,5 +352,9 @@ footer a:hover {
 
   .courses-grid {
     grid-template-columns: 1fr;
+  }
+
+  #presale-btn {
+    max-width: 100%;
   }
 }
