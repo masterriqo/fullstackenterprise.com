@@ -18,37 +18,25 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Presale Button -->
   <section class="hero">
     <h1>DGTL-ECON:201</h1>
     <p>Break the Old Script. Learn to Play the New Game.</p>
-    <button id="presale-btn" aria-label="Pre-Sale Registration for Digital Economics">🚀 Pre-Sale Access</button>
-  </section>
-
-  <!-- Top Lead Capture Form -->
-  <section class="cta" id="top-cta">
-    <h2>Join the Digital Economics Newsletter</h2>
-    <form id="lead-form-top">
-      <input type="hidden" name="utm_source" id="utm_source_top">
-      <input type="hidden" name="utm_medium" id="utm_medium_top">
-      <input type="hidden" name="utm_campaign" id="utm_campaign_top">
-      <input type="hidden" name="utm_content" id="utm_content_top">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit" id="submit-btn-top">Subscribe</button>
-    </form>
-    <p id="form-response-top"></p>
+    <!-- Presale Button -->
+    <button id="presale-btn" aria-label="Pre-Sale Registration for Digital Economics">
+      🚀 Pre-Sale Access
+    </button>
   </section>
 
   <!-- Course Overview -->
   <section class="course-overview">
     <h2>Course Objectives</h2>
     <ul>
-      <li>Understand how economics has shifted from 1960s to the digital era.</li>
-      <li>Learn to leverage digital tools and platforms for financial freedom.</li>
-      <li>Gain actionable strategies for income growth, investing, and entrepreneurship.</li>
-      <li>Recognize and avoid consumerism and debt traps.</li>
-      <li>Build your own digital economics roadmap for long-term success.</li>
+      <li>Understand economic shifts from 1960s to 2025.</li>
+      <li>Learn strategies for financial independence in the digital era.</li>
+      <li>Build portfolio and leverage skills for income generation.</li>
+      <li>Identify and escape the consumerism trap.</li>
+      <li>Apply digital economics for personal and professional growth.</li>
     </ul>
   </section>
 
@@ -117,14 +105,14 @@
 
   <!-- Learning Resources -->
   <section class="resources">
-    <h2>Recommended Resources</h2>
+    <h2>Learning Resources</h2>
     <ul>
       <li><strong>Rich Dad Poor Dad</strong> – Robert Kiyosaki</li>
       <li><strong>The Millionaire Fastlane</strong> – MJ DeMarco</li>
-      <li><strong>The $100 Startup</strong> – Chris Guillebeau</li>
+      <li><strong>Principles</strong> – Ray Dalio</li>
       <li><strong>Atomic Habits</strong> – James Clear</li>
-      <li><strong>Tools of Titans</strong> – Tim Ferriss</li>
-      <li><strong>The Art of Learning</strong> – Josh Waitzkin</li>
+      <li><strong>The Psychology of Money</strong> – Morgan Housel</li>
+      <li><strong>Zero to One</strong> – Peter Thiel</li>
     </ul>
   </section>
 
@@ -132,22 +120,22 @@
   <section class="target-audience">
     <h2>Who This Course is For</h2>
     <ul>
-      <li>Self-learners seeking financial freedom</li>
-      <li>Professionals aiming to scale online</li>
-      <li>Students exploring alternative economics</li>
-      <li>Creators & entrepreneurs looking to leverage digital platforms</li>
+      <li>Self-learners and autodidacts</li>
+      <li>Professionals seeking financial independence</li>
+      <li>Students aiming for entrepreneurial skillsets</li>
+      <li>Creatives and aspiring digital entrepreneurs</li>
     </ul>
 
     <h2>Unique Selling Points</h2>
     <ul>
-      <li>Actionable strategies for 21st-century economics</li>
-      <li>Focus on digital leverage and scalable income</li>
-      <li>Practical roadmap for real-world financial freedom</li>
+      <li>Holistic Approach – Combines economics, digital skills, and leverage strategies.</li>
+      <li>Actionable Practices – Immediate steps to build income streams.</li>
+      <li>Future-Proof – Practical for the 21st century economy.</li>
     </ul>
   </section>
 
-  <!-- Bottom Lead Capture Form -->
-  <section class="cta" id="bottom-cta">
+  <!-- Lead Capture Form at Bottom -->
+  <section class="cta">
     <h2>Sign Up for Updates on DGTL-ECON:201</h2>
     <form id="lead-form-bottom">
       <input type="hidden" name="utm_source" id="utm_source_bottom">
@@ -171,60 +159,6 @@
   <!-- Scripts -->
   <script>
   (function() {
-    // Lead Form Initialization
-    function initForm(formId, btnId, respId, utmPrefix = "") {
-      const form = document.getElementById(formId);
-      const btn = document.getElementById(btnId);
-      const resp = document.getElementById(respId);
-      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
-      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
-
-      utmKeys.forEach(key => {
-        const field = document.getElementById(key + (utmPrefix ? "_" + utmPrefix : ""));
-        const value = params[key] || localStorage.getItem(key) || "";
-        field.value = value;
-        if (params[key]) localStorage.setItem(key, params[key]);
-      });
-
-      form.addEventListener("submit", async e => {
-        e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = "Submitting...";
-
-        const formData = Object.fromEntries(new FormData(form).entries());
-        formData.page_url = window.location.href;
-        formData.tags = ["digital_economics", "pre_sale"];
-
-        try {
-          const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/capture-lead", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-          });
-          const result = await res.json();
-          if (result.success) {
-            resp.innerText = "✅ Thanks for subscribing!";
-            resp.style.color = "green";
-            form.reset();
-          } else {
-            resp.innerText = "❌ Something went wrong. Try again.";
-            resp.style.color = "red";
-            console.error(result);
-          }
-        } catch (err) {
-          resp.innerText = "❌ Network error. Try again.";
-          resp.style.color = "red";
-          console.error(err);
-        } finally {
-          btn.disabled = false;
-          btn.innerText = "Subscribe";
-        }
-      });
-    }
-
-    initForm("lead-form-top", "submit-btn-top", "form-response-top");
-    initForm("lead-form-bottom", "submit-btn-bottom", "form-response-bottom", "bottom");
-
     // Presale Button Handler
     const presaleBtn = document.getElementById("presale-btn");
     presaleBtn.addEventListener("click", async () => {
@@ -258,6 +192,59 @@
         console.error(err);
       }
     });
+
+    // Lead Capture Forms Handler
+    function initForm(formId, btnId, respId, utmPrefix = "") {
+      const form = document.getElementById(formId);
+      const btn = document.getElementById(btnId);
+      const resp = document.getElementById(respId);
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
+
+      utmKeys.forEach(key => {
+        const field = document.getElementById(key + (utmPrefix ? "_" + utmPrefix : ""));
+        const value = params[key] || localStorage.getItem(key) || "";
+        field.value = value;
+        if (params[key]) localStorage.setItem(key, params[key]);
+      });
+
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Submitting...";
+
+        const formData = Object.fromEntries(new FormData(form).entries());
+        formData.page_url = window.location.href;
+        formData.tags = ["digital-economics", "newsletter"];
+
+        try {
+          const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          });
+          const result = await res.json();
+          if (result.success) {
+            resp.innerText = "✅ Thanks for subscribing!";
+            resp.style.color = "green";
+            form.reset();
+          } else {
+            resp.innerText = "❌ Something went wrong. Try again.";
+            resp.style.color = "red";
+            console.error(result);
+          }
+        } catch (err) {
+          resp.innerText = "❌ Network error. Try again.";
+          resp.style.color = "red";
+          console.error(err);
+        } finally {
+          btn.disabled = false;
+          btn.innerText = "Subscribe";
+        }
+      });
+    }
+
+    initForm("lead-form-bottom", "submit-btn-bottom", "form-response-bottom");
   })();
   </script>
 </body>
