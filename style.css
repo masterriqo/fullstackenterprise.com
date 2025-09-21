@@ -77,7 +77,7 @@ header {
 }
 
 /* ==============================
-   COURSES GRID (courses.html)
+   COURSES / SERVICES GRID
 ============================== */
 .courses-grid {
   display: grid;
@@ -121,7 +121,7 @@ header {
 }
 
 /* ==============================
-   INDIVIDUAL COURSE PAGES
+   INDIVIDUAL COURSE / SERVICE PAGES
 ============================== */
 .course-overview {
   background: #111;
@@ -187,20 +187,19 @@ h2 {
 }
 
 .how-it-works {
-  background-color: #000; /* black background */
-  color: #fff; /* white text */
+  background-color: #000;
+  color: #fff;
   padding: 3rem 2rem;
   border-radius: 8px;
 }
 
 .how-it-works .step {
-  background-color: #111; /* slightly lighter black for contrast */
+  background-color: #111;
   color: #fff;
   padding: 1.5rem;
   border-radius: 6px;
   margin-bottom: 1rem;
 }
-
 
 /* ==============================
    CALL-TO-ACTION / FORMS
