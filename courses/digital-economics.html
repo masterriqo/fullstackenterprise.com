@@ -8,137 +8,171 @@
 </head>
 <body>
   <header>
-    <nav class="navbar" aria-label="Main Navigation">
+    <nav class="navbar">
       <div class="logo">FullStack Enterprise</div>
       <ul class="nav-links">
-        <li><a href="/" aria-label="Home Page">Home</a></li>
-        <li><a href="/courses.html" aria-label="Courses Page">Courses</a></li>
-        <li><a href="/services.html" aria-label="Services Page">Services</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/services.html">Services</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Pre-Sale CTA Button -->
-  <section class="pre-sale-cta" aria-labelledby="pre-sale-title">
-    <h2 id="pre-sale-title" class="visually-hidden">Pre-Sale CTA</h2>
-    <button id="pre-sale-btn" aria-label="Pre-sale Purchase for DGTL-ECON:201 Course">Pre-Sale: Reserve Your Spot</button>
-  </section>
-
   <!-- Hero Section -->
-  <section class="hero" aria-labelledby="hero-title">
-    <h1 id="hero-title">DGTL-ECON:201</h1>
+  <section class="hero">
+    <h1>DGTL-ECON:201</h1>
     <p>Break the Old Script. Learn to Play the New Game.</p>
+    <button id="presale-btn" aria-label="Pre-Sale Registration for Digital Economics">🚀 Pre-Sale Access</button>
   </section>
 
-  <!-- Lead Capture Form Top -->
-  <section class="cta" aria-labelledby="newsletter-title">
-    <h2 id="newsletter-title">Subscribe for Digital Economics Updates</h2>
-    <form id="lead-form" aria-label="Digital Economics Newsletter Signup Top">
-      <input type="hidden" name="utm_source" id="utm_source">
-      <input type="hidden" name="utm_medium" id="utm_medium">
-      <input type="hidden" name="utm_campaign" id="utm_campaign">
-      <input type="hidden" name="utm_content" id="utm_content">
-      <input type="text" name="name" placeholder="Your Name" required aria-required="true">
-      <input type="email" name="email" placeholder="Your Email" required aria-required="true">
-      <button type="submit" id="submit-btn" aria-label="Subscribe to Digital Economics Newsletter">Subscribe</button>
+  <!-- Top Lead Capture Form -->
+  <section class="cta" id="top-cta">
+    <h2>Join the Digital Economics Newsletter</h2>
+    <form id="lead-form-top">
+      <input type="hidden" name="utm_source" id="utm_source_top">
+      <input type="hidden" name="utm_medium" id="utm_medium_top">
+      <input type="hidden" name="utm_campaign" id="utm_campaign_top">
+      <input type="hidden" name="utm_content" id="utm_content_top">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn-top">Subscribe</button>
     </form>
-    <p id="form-response" aria-live="polite"></p>
+    <p id="form-response-top"></p>
   </section>
 
-  <!-- Course Modules -->
-  <section class="course-modules" aria-labelledby="modules-title">
-    <div class="container">
-      <h2 id="modules-title">Course Modules</h2>
-      <div class="cards-grid">
+  <!-- Course Overview -->
+  <section class="course-overview">
+    <h2>Course Objectives</h2>
+    <ul>
+      <li>Understand how economics has shifted from 1960s to the digital era.</li>
+      <li>Learn to leverage digital tools and platforms for financial freedom.</li>
+      <li>Gain actionable strategies for income growth, investing, and entrepreneurship.</li>
+      <li>Recognize and avoid consumerism and debt traps.</li>
+      <li>Build your own digital economics roadmap for long-term success.</li>
+    </ul>
+  </section>
 
-        <div class="module-card" id="module-1" aria-labelledby="module-1-title">
-          <h3 id="module-1-title">Module 1: History & Context</h3>
-          <ul>
-            <li>Why the “get a second job” advice used to work</li>
-            <li>Wages, pensions, and dollar strength then vs now</li>
-            <li>1960s vs 2025 household economics</li>
-            <li>Conclusion: the rules changed</li>
-          </ul>
-        </div>
+  <!-- Modules Section -->
+  <section class="modules">
+    <h2>Course Modules</h2>
 
-        <div class="module-card" id="module-2" aria-labelledby="module-2-title">
-          <h3 id="module-2-title">Module 2: Economics for Survival</h3>
-          <ul>
-            <li>Liabilities vs assets</li>
-            <li>Cap of time-for-money work</li>
-            <li>Leverage used by corporations & wealthy individuals</li>
-            <li>Consumerism trap</li>
-          </ul>
-        </div>
+    <div class="module" id="module-1" aria-label="Module 1: History & Context">
+      <h3>Module 1: History & Context</h3>
+      <ul>
+        <li>Why the “get a second job” advice used to work</li>
+        <li>Wages, pensions, and dollar strength then vs now</li>
+        <li>1960s vs 2025 household economics</li>
+        <li>Conclusion: the rules changed</li>
+      </ul>
+    </div>
 
-        <div class="module-card" id="module-3" aria-labelledby="module-3-title">
-          <h3 id="module-3-title">Module 3: The Digital Shift</h3>
-          <ul>
-            <li>Information is free, skills are democratized</li>
-            <li>Remote work, creator economy, automation</li>
-            <li>Your laptop = more powerful than a factory</li>
-          </ul>
-        </div>
+    <div class="module" id="module-2" aria-label="Module 2: Economics for Survival">
+      <h3>Module 2: Economics for Survival</h3>
+      <ul>
+        <li>Liabilities vs assets</li>
+        <li>Cap of time-for-money work</li>
+        <li>Leverage used by corporations & wealthy individuals</li>
+        <li>Consumerism trap</li>
+      </ul>
+    </div>
 
-        <div class="module-card" id="module-4" aria-labelledby="module-4-title">
-          <h3 id="module-4-title">Module 4: The New Pathways</h3>
-          <ul>
-            <li>Education 2.0: certifications & micro-learning</li>
-            <li>Building a portfolio (GitHub, blog, YouTube)</li>
-            <li>Direct selling: freelance, consulting, courses</li>
-            <li>Incorporating yourself as a business</li>
-          </ul>
-        </div>
+    <div class="module" id="module-3" aria-label="Module 3: The Digital Shift">
+      <h3>Module 3: The Digital Shift</h3>
+      <ul>
+        <li>Information is free, skills are democratized</li>
+        <li>Remote work, creator economy, automation</li>
+        <li>Your laptop = more powerful than a factory</li>
+      </ul>
+    </div>
 
-        <div class="module-card" id="module-5" aria-labelledby="module-5-title">
-          <h3 id="module-5-title">Module 5: Practical Implementation</h3>
-          <ul>
-            <li>Cutting liabilities & wasted time</li>
-            <li>Investing in internet, skills, and scalable tools</li>
-            <li>First leverage moves: services, products, automation</li>
-            <li>Scaling: $300 → $3,000 online strategies</li>
-          </ul>
-        </div>
+    <div class="module" id="module-4" aria-label="Module 4: The New Pathways">
+      <h3>Module 4: The New Pathways</h3>
+      <ul>
+        <li>Education 2.0: certifications & micro-learning</li>
+        <li>Building a portfolio (GitHub, blog, YouTube)</li>
+        <li>Direct selling: freelance, consulting, courses</li>
+        <li>Incorporating yourself as a business</li>
+      </ul>
+    </div>
 
-        <div class="module-card" id="module-6" aria-labelledby="module-6-title">
-          <h3 id="module-6-title">Module 6: Liberation</h3>
-          <ul>
-            <li>Redefining leisure & time freedom</li>
-            <li>True liberty in the 21st century</li>
-            <li>Reframing risk: the danger of staying trapped</li>
-          </ul>
-        </div>
+    <div class="module" id="module-5" aria-label="Module 5: Practical Implementation">
+      <h3>Module 5: Practical Implementation</h3>
+      <ul>
+        <li>Cutting liabilities & wasted time</li>
+        <li>Investing in internet, skills, and scalable tools</li>
+        <li>First leverage moves: services, products, automation</li>
+        <li>Scaling: $300 → $3,000 online strategies</li>
+      </ul>
+    </div>
 
-      </div>
+    <div class="module" id="module-6" aria-label="Module 6: Liberation">
+      <h3>Module 6: Liberation</h3>
+      <ul>
+        <li>Redefining leisure & time freedom</li>
+        <li>True liberty in the 21st century</li>
+        <li>Reframing risk: the danger of staying trapped</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Lead Capture Form Bottom -->
-  <section class="cta" aria-labelledby="newsletter-bottom-title">
-    <h2 id="newsletter-bottom-title">Sign Up for Updates on DGTL-ECON:201</h2>
-    <form id="lead-form-2" aria-label="Digital Economics Newsletter Signup Bottom">
-      <input type="hidden" name="utm_source" id="utm_source_2">
-      <input type="hidden" name="utm_medium" id="utm_medium_2">
-      <input type="hidden" name="utm_campaign" id="utm_campaign_2">
-      <input type="hidden" name="utm_content" id="utm_content_2">
-      <input type="text" name="name" placeholder="Your Name" required aria-required="true">
-      <input type="email" name="email" placeholder="Your Email" required aria-required="true">
-      <button type="submit" id="submit-btn-2" aria-label="Subscribe to Digital Economics Newsletter Bottom">Subscribe</button>
-    </form>
-    <p id="form-response-2" aria-live="polite"></p>
+  <!-- Learning Resources -->
+  <section class="resources">
+    <h2>Recommended Resources</h2>
+    <ul>
+      <li><strong>Rich Dad Poor Dad</strong> – Robert Kiyosaki</li>
+      <li><strong>The Millionaire Fastlane</strong> – MJ DeMarco</li>
+      <li><strong>The $100 Startup</strong> – Chris Guillebeau</li>
+      <li><strong>Atomic Habits</strong> – James Clear</li>
+      <li><strong>Tools of Titans</strong> – Tim Ferriss</li>
+      <li><strong>The Art of Learning</strong> – Josh Waitzkin</li>
+    </ul>
   </section>
 
-  <footer aria-label="Site Footer">
+  <!-- Target Audience & USP -->
+  <section class="target-audience">
+    <h2>Who This Course is For</h2>
+    <ul>
+      <li>Self-learners seeking financial freedom</li>
+      <li>Professionals aiming to scale online</li>
+      <li>Students exploring alternative economics</li>
+      <li>Creators & entrepreneurs looking to leverage digital platforms</li>
+    </ul>
+
+    <h2>Unique Selling Points</h2>
+    <ul>
+      <li>Actionable strategies for 21st-century economics</li>
+      <li>Focus on digital leverage and scalable income</li>
+      <li>Practical roadmap for real-world financial freedom</li>
+    </ul>
+  </section>
+
+  <!-- Bottom Lead Capture Form -->
+  <section class="cta" id="bottom-cta">
+    <h2>Sign Up for Updates on DGTL-ECON:201</h2>
+    <form id="lead-form-bottom">
+      <input type="hidden" name="utm_source" id="utm_source_bottom">
+      <input type="hidden" name="utm_medium" id="utm_medium_bottom">
+      <input type="hidden" name="utm_campaign" id="utm_campaign_bottom">
+      <input type="hidden" name="utm_content" id="utm_content_bottom">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn-bottom">Subscribe</button>
+    </form>
+    <p id="form-response-bottom"></p>
+  </section>
+
+  <footer>
     <p>
       <a href="/privacy.html">Privacy Policy</a> | 
       <a href="/terms.html">Terms of Service</a>
     </p>
   </footer>
 
-  <!-- Lead Form Script -->
+  <!-- Scripts -->
   <script>
   (function() {
-    function setupForm(formId, btnId, respId, utmSuffix = "") {
+    // Lead Form Initialization
+    function initForm(formId, btnId, respId, utmPrefix = "") {
       const form = document.getElementById(formId);
       const btn = document.getElementById(btnId);
       const resp = document.getElementById(respId);
@@ -146,10 +180,10 @@
       const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
 
       utmKeys.forEach(key => {
-        const field = document.getElementById(key + (utmSuffix ? "_" + utmSuffix : ""));
+        const field = document.getElementById(key + (utmPrefix ? "_" + utmPrefix : ""));
         const value = params[key] || localStorage.getItem(key) || "";
-        if(field) field.value = value;
-        if(params[key]) localStorage.setItem(key, params[key]);
+        field.value = value;
+        if (params[key]) localStorage.setItem(key, params[key]);
       });
 
       form.addEventListener("submit", async e => {
@@ -159,7 +193,7 @@
 
         const formData = Object.fromEntries(new FormData(form).entries());
         formData.page_url = window.location.href;
-        formData.tags = ["digital-economics","free_course"];
+        formData.tags = ["digital_economics", "pre_sale"];
 
         try {
           const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/capture-lead", {
@@ -167,9 +201,8 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
           });
-
           const result = await res.json();
-          if(result.success){
+          if (result.success) {
             resp.innerText = "✅ Thanks for subscribing!";
             resp.style.color = "green";
             form.reset();
@@ -178,7 +211,7 @@
             resp.style.color = "red";
             console.error(result);
           }
-        } catch(err) {
+        } catch (err) {
           resp.innerText = "❌ Network error. Try again.";
           resp.style.color = "red";
           console.error(err);
@@ -189,8 +222,42 @@
       });
     }
 
-    setupForm("lead-form","submit-btn","form-response");
-    setupForm("lead-form-2","submit-btn-2","form-response-2","2");
+    initForm("lead-form-top", "submit-btn-top", "form-response-top");
+    initForm("lead-form-bottom", "submit-btn-bottom", "form-response-bottom", "bottom");
+
+    // Presale Button Handler
+    const presaleBtn = document.getElementById("presale-btn");
+    presaleBtn.addEventListener("click", async () => {
+      presaleBtn.disabled = true;
+      presaleBtn.innerText = "Redirecting...";
+
+      try {
+        const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            priceId: "price_1S9qlrKQ07Xmklz7owOz55tz",
+            successUrl: window.location.origin + "/thank-you.html",
+            cancelUrl: window.location.href
+          })
+        });
+
+        const session = await res.json();
+        if (session.success && session.session.url) {
+          window.location.href = session.session.url;
+        } else {
+          alert("❌ Could not start checkout session.");
+          presaleBtn.disabled = false;
+          presaleBtn.innerText = "🚀 Pre-Sale Access";
+          console.error(session);
+        }
+      } catch (err) {
+        alert("❌ Network error. Try again.");
+        presaleBtn.disabled = false;
+        presaleBtn.innerText = "🚀 Pre-Sale Access";
+        console.error(err);
+      }
+    });
   })();
   </script>
 </body>
