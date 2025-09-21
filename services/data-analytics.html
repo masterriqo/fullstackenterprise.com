@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data & Analytics Services</title>
+  <title>Data & Analytics Services | FullStackEnterprise</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -12,14 +12,14 @@
        HEADER + NAV
   ============================== -->
   <header>
-    <div class="navbar">
-      <div class="logo">YourBrand</div>
+    <nav class="navbar">
+      <div class="logo">FullStackEnterprise</div>
       <ul class="nav-links">
         <li><a href="/index.html">Home</a></li>
-        <li><a href="/courses.html">Courses</a></li>        
+        <li><a href="/courses.html">Courses</a></li>
         <li><a href="/services.html">Services</a></li>
       </ul>
-    </div>
+    </nav>
   </header>
 
   <!-- ==============================
@@ -36,7 +36,7 @@
   <section id="data-analyst-services">
     <h2>Our Services</h2>
     <div class="courses-grid">
-      <div class="course-card">
+      <div class="course-card" id="service-data-cleaning" aria-label="Data Cleaning Service">
         <h3>Data Cleaning</h3>
         <p>Cleaning and organizing raw data for analysis.</p>
         <ul>
@@ -47,7 +47,7 @@
         </ul>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="service-eda" aria-label="Exploratory Data Analysis Service">
         <h3>Exploratory Data Analysis (EDA)</h3>
         <p>Analyzing data to uncover patterns, trends, and anomalies.</p>
         <ul>
@@ -58,7 +58,7 @@
         </ul>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="service-statistical-analysis" aria-label="Statistical Analysis Service">
         <h3>Statistical Analysis</h3>
         <p>Performing statistical tests and modeling to draw insights.</p>
         <ul>
@@ -69,7 +69,7 @@
         </ul>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="service-dashboard-creation" aria-label="Dashboard Creation Service">
         <h3>Dashboard Creation</h3>
         <p>Building interactive dashboards using Tableau or Power BI.</p>
         <ul>
@@ -80,7 +80,7 @@
         </ul>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="service-predictive-modeling" aria-label="Predictive Modeling Service">
         <h3>Predictive Modeling</h3>
         <p>Developing predictive models using machine learning or regression analysis.</p>
         <ul>
@@ -91,7 +91,7 @@
         </ul>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="service-big-data-analysis" aria-label="Big Data Analysis Service">
         <h3>Big Data Analysis</h3>
         <p>Analyzing large datasets using Hadoop, Spark, or SQL.</p>
         <ul>
@@ -110,19 +110,19 @@
   <section id="packages">
     <h2>Packages</h2>
     <div class="courses-grid">
-      <div class="course-card">
+      <div class="course-card" id="package-starter-insight" aria-label="Starter Insight Package">
         <h3>Starter Insight Package</h3>
         <p>Data cleaning + quick EDA</p>
         <p><strong>$375</strong> | 5–8 hrs</p>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="package-business-intelligence" aria-label="Business Intelligence Package">
         <h3>Business Intelligence Package</h3>
         <p>Dashboards + predictive modeling + visualization</p>
         <p><strong>$1,250</strong></p>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="package-enterprise-partner" aria-label="Enterprise Data Partner Package">
         <h3>Enterprise Data Partner (Ongoing)</h3>
         <p>Automation, big data, dashboards, reporting</p>
         <p><strong>$2,000/month</strong></p>
@@ -136,19 +136,19 @@
   <section id="pm-packages">
     <h2>Project Management Packages</h2>
     <div class="courses-grid">
-      <div class="course-card">
+      <div class="course-card" id="pm-project-kickstart" aria-label="Project Kickstart Package">
         <h3>Project Kickstart</h3>
         <p>Scoping, risk assessment, timeline build</p>
         <p><strong>$500</strong></p>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="pm-full-oversight" aria-label="Full Project Oversight Package">
         <h3>Full Project Oversight</h3>
         <p>Weekly stakeholder management, risk control, reporting</p>
         <p><strong>$1,500</strong></p>
       </div>
 
-      <div class="course-card">
+      <div class="course-card" id="pm-retainer" aria-label="Project Management Retainer">
         <h3>Retainer</h3>
         <p>Ongoing support, change management, closure</p>
         <p><strong>$1,000/month</strong></p>
@@ -161,23 +161,27 @@
   ============================== -->
   <section class="cta">
     <h2>Request a Consultation</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Tell us about your data needs..." rows="4"></textarea>
-      <button type="submit">Submit</button>
+    <form id="lead-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell us about your data needs..." rows="4"></textarea>
+      <input type="hidden" name="source" id="form-source">
+      <button type="submit">Request a Consultation</button>
       <div id="form-response"></div>
     </form>
+    <script>
+      document.getElementById("form-source").value = window.location.pathname;
+    </script>
   </section>
 
   <!-- ==============================
        FOOTER
   ============================== -->
   <footer>
-    <p>&copy; 2025 YourBrand. All rights reserved.</p>
+    <p>&copy; 2025 FullStackEnterprise. All rights reserved.</p>
     <p>
-      <a href="#">Privacy Policy</a> | 
-      <a href="#">Terms of Service</a>
+      <a href="/privacy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms of Service</a>
     </p>
   </footer>
 
