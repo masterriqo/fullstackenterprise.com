@@ -26,8 +26,14 @@
        MAIN
   ============================== -->
   <main>
-    <h1>Our Courses</h1>
-    <div class="courses-grid">
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Our Courses</h1>
+      <p>Learn cutting-edge skills to level up your career and business. From marketing to meta-learning and synchronicity, we have a course for every growth-minded individual.</p>
+    </section>
+
+    <!-- COURSES GRID -->
+    <section class="courses-grid">
       <!-- Course 1 -->
       <a href="/courses/digital-economics.html" class="course-card" id="course-dgtlecon" aria-label="Digital Economics Course">
         <h3>DGTLECON:201</h3>
@@ -43,7 +49,7 @@
       <!-- Course 3 -->
       <a href="/courses/monks2masters.html" class="course-card" id="course-mnks2mstrs" aria-label="Monks to Masters Course">
         <h3>MNKS2MSTRS:301</h3>
-        <p>Subconscious Reconditioning, Character Development & Systemized Execution</p>
+        <p>Subconscious Reconditioning, Character Development & Systemized Execution.</p>
       </a>
 
       <!-- Course 4 -->
@@ -57,21 +63,16 @@
         <h3>Synchronicity</h3>
         <p>Explore meaningful coincidences, patterns, and hidden connections in life.</p>
       </a>
-    </div>
+    </section>
 
-    <!-- ==============================
-         CTA Lead Form
-    ============================== -->
+    <!-- CTA Lead Form -->
     <section class="cta">
       <h2>Get Started Today</h2>
       <form id="lead-form">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Tell us what you need..." rows="4"></textarea>
-
-        <!-- Hidden field for source attribution -->
         <input type="hidden" name="source" id="form-source">
-
         <button type="submit">Join the Waitlist</button>
         <div id="form-response"></div>
       </form>
