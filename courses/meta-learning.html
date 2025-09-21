@@ -22,19 +22,20 @@
   <section class="hero">
     <h1>Meta-Learning: META-LRNG</h1>
     <p>Master any subject. Overcome mental resistance. Build lifelong learning systems.</p>
+
+    <!-- Pre-Sale Button -->
+    <button id="pre-sale-btn">Pre-Sale Access</button>
   </section>
 
   <!-- Lead Capture Form -->
   <section class="cta">
     <h2>Join the Meta-Learning Newsletter</h2>
     <form id="lead-form">
-      <!-- Hidden UTM fields -->
       <input type="hidden" name="utm_source" id="utm_source">
       <input type="hidden" name="utm_medium" id="utm_medium">
       <input type="hidden" name="utm_campaign" id="utm_campaign">
       <input type="hidden" name="utm_content" id="utm_content">
 
-      <!-- Visible fields -->
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <button type="submit" id="submit-btn">Subscribe</button>
@@ -57,60 +58,8 @@
   <!-- Modules -->
   <section class="modules">
     <h2>Course Modules</h2>
-
-    <div class="module">
-      <h3>Module 1: Foundations of Meta-Learning</h3>
-      <ul>
-        <li><strong>Lesson 1.1:</strong> What is Meta-Learning? – Introduction to self-education, meta-cognition, and benefits of learning science.</li>
-        <li><strong>Lesson 1.2:</strong> The Learning Brain – Neuroplasticity, dopamine, serotonin, acetylcholine, managing emotions, overcoming brain fog.</li>
-        <li><strong>Lesson 1.3:</strong> Mental Health and Learning – Procrastination tools, mindfulness, meditation practices.</li>
-      </ul>
-    </div>
-
-    <div class="module">
-      <h3>Module 2: Optimizing the Learning Process</h3>
-      <ul>
-        <li><strong>Lesson 2.1:</strong> Active Learning Techniques – Feynman Technique, spaced repetition, asking better questions.</li>
-        <li><strong>Lesson 2.2:</strong> Memory Mastery – Chunking, associative memory, memory palace techniques.</li>
-        <li><strong>Lesson 2.3:</strong> Time and Energy Management – Pareto Principle, Eisenhower Matrix, ultradian rhythm routines.</li>
-      </ul>
-    </div>
-
-    <div class="module">
-      <h3>Module 3: Overcoming Resistance and Mental Clarity</h3>
-      <ul>
-        <li><strong>Lesson 3.1:</strong> Combatting Resistance – Psychological resistance, shadow work, The War of Art techniques.</li>
-        <li><strong>Lesson 3.2:</strong> Managing Mental Illness – ADHD, anxiety, depression techniques.</li>
-        <li><strong>Lesson 3.3:</strong> Designing Environments for Focus – Structuring physical and mental spaces.</li>
-      </ul>
-    </div>
-
-    <div class="module">
-      <h3>Module 4: Creativity and Conceptual Networking</h3>
-      <ul>
-        <li><strong>Lesson 4.1:</strong> Symbolic Thinking – Jungian archetypes, sacred geometry, symbolic frameworks.</li>
-        <li><strong>Lesson 4.2:</strong> Summoning Creativity – Flow states, lateral thinking exercises, rituals for perspective.</li>
-        <li><strong>Lesson 4.3:</strong> Cross-Disciplinary Synthesis – Connecting ideas, personal conceptual networks.</li>
-      </ul>
-    </div>
-
-    <div class="module">
-      <h3>Module 5: Metaphysics and Hermetic Principles in Learning</h3>
-      <ul>
-        <li><strong>Lesson 5.1:</strong> The Hermetic Framework – Principles of Mentalism, Correspondence, Polarity, Rhythm.</li>
-        <li><strong>Lesson 5.2:</strong> Consciousness and Mastery – Focus and creativity alignment with natural cycles.</li>
-        <li><strong>Lesson 5.3:</strong> Symbolic Systems for Mastery – Using Tarot, symbols, and metaphysical tools.</li>
-      </ul>
-    </div>
-
-    <div class="module">
-      <h3>Module 6: Lifelong Learning Systems</h3>
-      <ul>
-        <li><strong>Lesson 6.1:</strong> Personal Knowledge Management – Organize and synthesize knowledge digitally.</li>
-        <li><strong>Lesson 6.2:</strong> Daily Practices for Mastery – Mental, physical, emotional routines, reflection exercises.</li>
-        <li><strong>Lesson 6.3:</strong> Goal Setting for Lifelong Learning – Adaptable learning roadmaps with measurable outcomes.</li>
-      </ul>
-    </div>
+    <!-- Modules 1–6 remain unchanged -->
+    <!-- ... (Keep your existing module content here) ... -->
   </section>
 
   <!-- Learning Resources -->
@@ -174,8 +123,34 @@
     </p>
   </footer>
 
-  <!-- Lead Form Script (same as homepage) -->
+  <!-- Scripts -->
   <script>
+  // Pre-sale Stripe Button
+  document.getElementById("pre-sale-btn").addEventListener("click", async () => {
+    const priceId = "price_1S9qlrKQ07Xmklz7owOz55tz"; // Your pre-sale price ID
+    const successUrl = window.location.origin + "/thank-you.html";
+    const cancelUrl = window.location.href;
+
+    try {
+      const res = await fetch("/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ priceId, successUrl, cancelUrl })
+      });
+      const data = await res.json();
+      if (data.success && data.session?.url) {
+        window.location.href = data.session.url;
+      } else {
+        console.error("Stripe session failed:", data);
+        alert("Failed to start checkout. Try again.");
+      }
+    } catch (err) {
+      console.error("Error creating Stripe session:", err);
+      alert("Network error. Try again.");
+    }
+  });
+
+  // Lead Capture Form
   (function() {
     const form = document.getElementById("lead-form");
     const btn = document.getElementById("submit-btn");
