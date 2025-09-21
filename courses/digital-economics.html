@@ -3,145 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COURSE_CODE | COURSE_NAME | FullStack Enterprise</title>
+  <title>DGTL-ECON:201 | Digital Economics | FullStack Enterprise</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
-  <!-- ==============================
-       HEADER & NAV
-  ============================== -->
   <header>
-    <nav class="navbar" aria-label="Main navigation">
+    <nav class="navbar">
       <div class="logo">FullStack Enterprise</div>
       <ul class="nav-links">
-        <li><a href="/" aria-label="Home page">Home</a></li>
-        <li><a href="/courses.html" aria-label="Courses page">Courses</a></li>
-        <li><a href="/services.html" aria-label="Services page">Services</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/services.html">Services</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ==============================
-       HERO
-  ============================== -->
-  <section class="hero" aria-label="Course Hero Section">
-    <h1 id="course-title">COURSE_CODE: COURSE_NAME</h1>
-    <p id="course-tagline">COURSE_TAGLINE</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>DGTL-ECON:201</h1>
+    <p>Break the Old Script. Learn to Play the New Game.</p>
   </section>
 
-  <!-- ==============================
-       COURSE OUTLINE
-  ============================== -->
-  <section class="course-overview" aria-label="Course Outline Section">
-    <h2>Course Outline</h2>
-
-    <!-- Example module template -->
-    <article id="module-1" class="module-card" aria-label="Module 1: MODULE_TITLE">
-      <h3>Module 1: MODULE_TITLE</h3>
-      <ul>
-        <li>Lesson 1</li>
-        <li>Lesson 2</li>
-        <li>Lesson 3</li>
-      </ul>
-    </article>
-
-    <article id="module-2" class="module-card" aria-label="Module 2: MODULE_TITLE">
-      <h3>Module 2: MODULE_TITLE</h3>
-      <ul>
-        <li>Lesson 1</li>
-        <li>Lesson 2</li>
-        <li>Lesson 3</li>
-      </ul>
-    </article>
-
-    <!-- Add more modules as needed -->
-  </section>
-
-  <!-- ==============================
-       CTA FORM
-  ============================== -->
-  <section class="cta" aria-label="Course Lead Capture">
-    <h2>Enroll or Get Updates</h2>
-    <form id="course-lead-form">
+  <!-- Lead Capture Form -->
+  <section class="cta">
+    <h2>Subscribe for Digital Economics Updates</h2>
+    <form id="lead-form">
       <input type="hidden" name="utm_source" id="utm_source">
       <input type="hidden" name="utm_medium" id="utm_medium">
       <input type="hidden" name="utm_campaign" id="utm_campaign">
       <input type="hidden" name="utm_content" id="utm_content">
-      <input type="hidden" name="source" value="course-page">
-
-      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
-      <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
-      <button type="submit" id="submit-btn">Submit</button>
-      <p id="form-response"></p>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn">Subscribe</button>
     </form>
+    <p id="form-response"></p>
   </section>
 
-  <!-- ==============================
-       FOOTER
-  ============================== -->
-  <footer aria-label="Site Footer">
-    <p>&copy; 2025 FullStack Enterprise. All rights reserved.</p>
+  <!-- Course Overview -->
+  <section class="course-overview">
+    <h2>Course Objectives</h2>
+    <ul>
+      <li>Understand the historical and economic shifts from 1960s to 2025.</li>
+      <li>Learn to leverage digital tools and information for wealth creation.</li>
+      <li>Master practical strategies for self-education, freelancing, and digital business.</li>
+      <li>Redefine time, liberty, and risk in the modern economy.</li>
+    </ul>
+  </section>
+
+  <!-- Modules -->
+  <section class="modules">
+    <h2>Course Modules</h2>
+
+    <div class="module" id="module-1" aria-label="Module 1: History & Context">
+      <h3>Module 1: History & Context</h3>
+      <ul>
+        <li id="lesson-1-1" aria-label="Lesson 1.1: Why the old advice worked">Why the “get a second job” advice used to work.</li>
+        <li id="lesson-1-2" aria-label="Lesson 1.2: Wages, pensions, and dollar strength">Wages, pensions, and dollar strength then vs now.</li>
+        <li id="lesson-1-3" aria-label="Lesson 1.3: Household economics comparison">Show the math: 1960s vs 2025 household economics.</li>
+        <li id="lesson-1-4" aria-label="Lesson 1.4: Rules changed conclusion">Conclusion: the rules changed.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-2" aria-label="Module 2: Economics for Survival">
+      <h3>Module 2: Economics for Survival</h3>
+      <ul>
+        <li id="lesson-2-1" aria-label="Lesson 2.1: Liabilities vs assets">Liabilities vs assets.</li>
+        <li id="lesson-2-2" aria-label="Lesson 2.2: Cap of time-for-money work">The cap of time-for-money work.</li>
+        <li id="lesson-2-3" aria-label="Lesson 2.3: Corporate leverage">Leverage used by corporations & wealthy individuals.</li>
+        <li id="lesson-2-4" aria-label="Lesson 2.4: Consumerism trap">The consumerism trap.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-3" aria-label="Module 3: The Digital Shift">
+      <h3>Module 3: The Digital Shift</h3>
+      <ul>
+        <li id="lesson-3-1" aria-label="Lesson 3.1: Free information and skill democratization">Information is free, skills are democratized.</li>
+        <li id="lesson-3-2" aria-label="Lesson 3.2: Remote work and creator economy">Remote work, creator economy, automation.</li>
+        <li id="lesson-3-3" aria-label="Lesson 3.3: Laptop power">Your laptop = more powerful than a factory.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-4" aria-label="Module 4: The New Pathways">
+      <h3>Module 4: The New Pathways</h3>
+      <ul>
+        <li id="lesson-4-1" aria-label="Lesson 4.1: Education 2.0">Education 2.0: certifications & micro-learning.</li>
+        <li id="lesson-4-2" aria-label="Lesson 4.2: Building a portfolio">Building a portfolio (GitHub, blog, YouTube, etc.).</li>
+        <li id="lesson-4-3" aria-label="Lesson 4.3: Direct selling methods">Direct selling: freelance, consulting, courses.</li>
+        <li id="lesson-4-4" aria-label="Lesson 4.4: Incorporation">Incorporating yourself as a business.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-5" aria-label="Module 5: Practical Implementation">
+      <h3>Module 5: Practical Implementation</h3>
+      <ul>
+        <li id="lesson-5-1" aria-label="Lesson 5.1: Cutting liabilities">Cutting liabilities & wasted time.</li>
+        <li id="lesson-5-2" aria-label="Lesson 5.2: Investing in tools">Investing in internet, skills, and scalable tools.</li>
+        <li id="lesson-5-3" aria-label="Lesson 5.3: First leverage moves">First leverage moves: services, products, automation.</li>
+        <li id="lesson-5-4" aria-label="Lesson 5.4: Scaling strategies">Scaling: $300 → $3,000 online strategies.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-6" aria-label="Module 6: Liberation">
+      <h3>Module 6: Liberation</h3>
+      <ul>
+        <li id="lesson-6-1" aria-label="Lesson 6.1: Redefining leisure">Redefining leisure & time freedom.</li>
+        <li id="lesson-6-2" aria-label="Lesson 6.2: True liberty">True liberty in the 21st century.</li>
+        <li id="lesson-6-3" aria-label="Lesson 6.3: Reframing risk">Reframing risk: the danger of staying trapped.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Learning Resources -->
+  <section class="resources">
+    <h2>Learning Resources</h2>
+    <ul>
+      <li><strong>Rich Dad Poor Dad</strong> – Robert Kiyosaki</li>
+      <li><strong>The Millionaire Next Door</strong> – Thomas J. Stanley</li>
+      <li><strong>The Intelligent Investor</strong> – Benjamin Graham</li>
+      <li><strong>Tools of Titans</strong> – Tim Ferriss</li>
+      <li><strong>The 4-Hour Workweek</strong> – Tim Ferriss</li>
+      <li><strong>Atomic Habits</strong> – James Clear</li>
+      <li><strong>Principles</strong> – Ray Dalio</li>
+      <li><strong>The Psychology of Money</strong> – Morgan Housel</li>
+    </ul>
+  </section>
+
+  <!-- Target Audience & USP -->
+  <section class="target-audience">
+    <h2>Who This Course is For</h2>
+    <ul>
+      <li>Aspiring digital entrepreneurs</li>
+      <li>Freelancers and solopreneurs</li>
+      <li>Professionals looking to leverage technology for income</li>
+      <li>Students and self-learners exploring digital economy strategies</li>
+    </ul>
+
+    <h2>Unique Selling Points</h2>
+    <ul>
+      <li>Hands-on practical strategies for digital wealth creation</li>
+      <li>Modern economic understanding for individuals</li>
+      <li>Step-by-step guidance from research to implementation</li>
+    </ul>
+  </section>
+
+  <!-- Lead Capture Form at Bottom -->
+  <section class="cta">
+    <h2>Sign Up for Updates on DGTL-ECON:201</h2>
+    <form id="lead-form-2">
+      <input type="hidden" name="utm_source" id="utm_source_2">
+      <input type="hidden" name="utm_medium" id="utm_medium_2">
+      <input type="hidden" name="utm_campaign" id="utm_campaign_2">
+      <input type="hidden" name="utm_content" id="utm_content_2">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit" id="submit-btn-2">Subscribe</button>
+    </form>
+    <p id="form-response-2"></p>
+  </section>
+
+  <footer>
     <p>
-      <a href="/privacy.html" aria-label="Privacy Policy">Privacy Policy</a> | 
-      <a href="/terms.html" aria-label="Terms of Service">Terms of Service</a>
+      <a href="/privacy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms of Service</a>
     </p>
   </footer>
 
-  <!-- ==============================
-       LEAD FORM SCRIPT
-  ============================== -->
+  <!-- Lead Form Script -->
   <script>
   (function() {
-    const form = document.getElementById("course-lead-form");
-    const btn = document.getElementById("submit-btn");
-    const resp = document.getElementById("form-response");
+    function initForm(formId, btnId, respId, utmPrefix = "") {
+      const form = document.getElementById(formId);
+      const btn = document.getElementById(btnId);
+      const resp = document.getElementById(respId);
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
 
-    // Populate UTM fields from URL or localStorage
-    const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
-    const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
-    utmKeys.forEach(key => {
-      const field = document.getElementById(key);
-      const value = params[key] || localStorage.getItem(key) || "";
-      field.value = value;
-      if (params[key]) localStorage.setItem(key, params[key]);
-    });
+      utmKeys.forEach(key => {
+        const field = document.getElementById(key + (utmPrefix ? "_" + utmPrefix : ""));
+        const value = params[key] || localStorage.getItem(key) || "";
+        field.value = value;
+        if (params[key]) localStorage.setItem(key, params[key]);
+      });
 
-    // Form submission handler
-    form.addEventListener("submit", async e => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.innerText = "Submitting...";
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Submitting...";
 
-      const formData = Object.fromEntries(new FormData(form).entries());
-      formData.page_url = window.location.href;
-      formData.tags = ["course-page"];
+        const formData = Object.fromEntries(new FormData(form).entries());
+        formData.page_url = window.location.href;
+        formData.tags = ["digital-economics", "free_course"];
 
-      try {
-        const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
-        const result = await res.json();
-        if (result.success) {
-          resp.innerText = "✅ Thanks for subscribing!";
-          resp.style.color = "green";
-          form.reset();
-        } else {
-          resp.innerText = "❌ Something went wrong. Try again.";
+        try {
+          const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          });
+          const result = await res.json();
+          if (result.success) {
+            resp.innerText = "✅ Thanks for subscribing!";
+            resp.style.color = "green";
+            form.reset();
+          } else {
+            resp.innerText = "❌ Something went wrong. Try again.";
+            resp.style.color = "red";
+            console.error(result);
+          }
+        } catch (err) {
+          resp.innerText = "❌ Network error. Try again.";
           resp.style.color = "red";
-          console.error(result);
+          console.error(err);
+        } finally {
+          btn.disabled = false;
+          btn.innerText = "Subscribe";
         }
-      } catch (err) {
-        resp.innerText = "❌ Network error. Try again.";
-        resp.style.color = "red";
-        console.error(err);
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "Submit";
-      }
-    });
+      });
+    }
+
+    initForm("lead-form", "submit-btn", "form-response");
+    initForm("lead-form-2", "submit-btn-2", "form-response-2", "2");
   })();
   </script>
 </body>
