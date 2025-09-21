@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Management Services | Fullstack Enterprise</title>
+  <title>Project Management Services | FullStackEnterprise</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+  <!-- ==============================
+       HEADER + NAV
+  ============================== -->
   <header>
     <div class="navbar">
       <div class="logo">FullStackEnterprise</div>
@@ -17,10 +21,11 @@
       </ul>
     </div>
   </header>
+
   <!-- ==============================
-       HEADER
+       HERO
   ============================== -->
-  <section>
+  <section class="hero" aria-label="Project Management Services Hero">
     <h1>Project Management Services</h1>
     <p>End-to-end project management support to help you scope, plan, and execute with precision.</p>
   </section>
@@ -28,68 +33,118 @@
   <!-- ==============================
        PROJECT MANAGEMENT SERVICES
   ============================== -->
-  <section id="project-management">
+  <section id="project-management" aria-label="Project Management Services List">
     <h2>Our Services</h2>
     <div class="courses-grid">
 
-      <div class="course-card">
+      <div id="pm-scoping" class="course-card" aria-label="Project Scoping">
         <h3>Project Scoping</h3>
         <p>Defining project objectives, deliverables, and timelines.</p>
-        <p><strong>5–10 hrs | $75–$150/hr | 10–15% | 2–3 days</strong></p>
+        <ul>
+          <li>Hours: 5–10 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 10–15%</li>
+          <li>Duration: 2–3 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-stakeholders" class="course-card" aria-label="Stakeholder Management">
         <h3>Stakeholder Management</h3>
         <p>Facilitating communication and alignment among stakeholders.</p>
-        <p><strong>3–8 hrs/week | $75–$150/hr | 5–10% | Ongoing</strong></p>
+        <ul>
+          <li>Hours: 3–8 hrs/week</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 5–10%</li>
+          <li>Duration: Ongoing</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-task-allocation" class="course-card" aria-label="Task & Resource Allocation">
         <h3>Task & Resource Allocation</h3>
         <p>Assigning tasks and allocating resources to meet project goals.</p>
-        <p><strong>5–15 hrs | $75–$150/hr | 10–20% | 3–5 days</strong></p>
+        <ul>
+          <li>Hours: 5–15 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 10–20%</li>
+          <li>Duration: 3–5 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-risk" class="course-card" aria-label="Risk Management">
         <h3>Risk Management</h3>
         <p>Identifying, assessing, and mitigating project risks.</p>
-        <p><strong>3–8 hrs | $75–$150/hr | 10–15% | 2–3 days</strong></p>
+        <ul>
+          <li>Hours: 3–8 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 10–15%</li>
+          <li>Duration: 2–3 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-timeline" class="course-card" aria-label="Project Timeline Development">
         <h3>Project Timeline Development</h3>
         <p>Creating and managing detailed project schedules and milestones.</p>
-        <p><strong>5–10 hrs | $75–$150/hr | 15–20% | 2–3 days</strong></p>
+        <ul>
+          <li>Hours: 5–10 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 15–20%</li>
+          <li>Duration: 2–3 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-budget" class="course-card" aria-label="Budget Management">
         <h3>Budget Management</h3>
         <p>Monitoring and controlling project costs to stay within budget.</p>
-        <p><strong>3–6 hrs | $75–$150/hr | 5–10% | 1–2 days</strong></p>
+        <ul>
+          <li>Hours: 3–6 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 5–10%</li>
+          <li>Duration: 1–2 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-training" class="course-card" aria-label="Team Training & Onboarding">
         <h3>Team Training & Onboarding</h3>
         <p>Preparing and onboarding team members for the project.</p>
-        <p><strong>5–10 hrs | $75–$150/hr | 10–15% | 2–3 days</strong></p>
+        <ul>
+          <li>Hours: 5–10 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 10–15%</li>
+          <li>Duration: 2–3 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-progress" class="course-card" aria-label="Progress Tracking & Reporting">
         <h3>Progress Tracking & Reporting</h3>
         <p>Monitoring progress and delivering regular updates to stakeholders.</p>
-        <p><strong>3–6 hrs/week | $75–$150/hr | 5–10% | Ongoing</strong></p>
+        <ul>
+          <li>Hours: 3–6 hrs/week</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 5–10%</li>
+          <li>Duration: Ongoing</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-change" class="course-card" aria-label="Change Management">
         <h3>Change Management</h3>
         <p>Managing scope changes, updates, and adjustments to the project plan.</p>
-        <p><strong>3–8 hrs | $75–$150/hr | 10–15% | 2–3 days</strong></p>
+        <ul>
+          <li>Hours: 3–8 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 10–15%</li>
+          <li>Duration: 2–3 days</li>
+        </ul>
       </div>
 
-      <div class="course-card">
+      <div id="pm-closure" class="course-card" aria-label="Project Closure">
         <h3>Project Closure</h3>
         <p>Finalizing all project activities, delivering reports, and conducting post-mortem analysis.</p>
-        <p><strong>5–10 hrs | $75–$150/hr | 10–20% | 2–3 days</strong></p>
+        <ul>
+          <li>Hours: 5–10 hrs</li>
+          <li>Hourly Rate: $75–$150/hr</li>
+          <li>Project Rate: 10–20%</li>
+          <li>Duration: 2–3 days</li>
+        </ul>
       </div>
 
     </div>
@@ -98,33 +153,55 @@
   <!-- ==============================
        PROJECT MANAGEMENT PACKAGES
   ============================== -->
-  <section id="project-management-packages">
+  <section id="project-management-packages" aria-label="Project Management Packages">
     <h2>Project Management Packages</h2>
     <div class="courses-grid">
 
-      <div class="course-card">
-        <h3>Startup Project Setup — $500</h3>
+      <div id="pm-startup" class="course-card" aria-label="Startup Project Setup Package">
+        <h3>Startup Project Setup</h3>
         <p>Project scoping + timeline + task allocation (ideal for small teams).</p>
+        <p><strong>$500</strong></p>
       </div>
 
-      <div class="course-card">
-        <h3>Growth Project Package — $1,200</h3>
+      <div id="pm-growth" class="course-card" aria-label="Growth Project Package">
+        <h3>Growth Project Package</h3>
         <p>Risk management + stakeholder coordination + reporting (for scaling projects).</p>
+        <p><strong>$1,200</strong></p>
       </div>
 
-      <div class="course-card">
-        <h3>Full Lifecycle Management — $2,500</h3>
+      <div id="pm-full-lifecycle" class="course-card" aria-label="Full Lifecycle Management Package">
+        <h3>Full Lifecycle Management</h3>
         <p>End-to-end oversight from scoping to closure, with ongoing reporting.</p>
+        <p><strong>$2,500</strong></p>
       </div>
 
     </div>
   </section>
 
   <!-- ==============================
+       CTA
+  ============================== -->
+  <section class="cta" aria-label="Request Project Management Consultation">
+    <h2>Request a Consultation</h2>
+    <form id="consultation-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell us about your project management needs..." rows="4"></textarea>
+      <input type="hidden" name="source" value="project-management-page">
+      <button type="submit">Submit</button>
+      <div id="form-response"></div>
+    </form>
+  </section>
+
+  <!-- ==============================
        FOOTER
   ============================== -->
   <footer>
-    <p>&copy; 2025 Fullstack Enterprise. All rights reserved.</p>
+    <p>&copy; 2025 FullStackEnterprise. All rights reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms of Service</a>
+    </p>
   </footer>
 
 </body>
