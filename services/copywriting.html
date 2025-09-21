@@ -12,14 +12,14 @@
        HEADER + NAV
   ============================== -->
   <header>
-    <div class="navbar">
+    <nav class="navbar">
       <div class="logo">FullStackEnterprise</div>
       <ul class="nav-links">
         <li><a href="/index.html">Home</a></li>
         <li><a href="/courses.html">Courses</a></li>
         <li><a href="/services.html">Services</a></li>
       </ul>
-    </div>
+    </nav>
   </header>
 
   <!-- ==============================
@@ -36,67 +36,56 @@
   <section id="copywriting-services">
     <h2>Our Services</h2>
     <div class="courses-grid">
-
-      <div class="course-card">
+      <div class="course-card" id="service-brand-messaging" aria-label="Brand Messaging Development Service">
         <h3>Brand Messaging Development</h3>
         <p>Crafting brand voice, tone, and messaging guidelines.</p>
         <p><strong>5–10 hrs | $75–$150/hr | 15–20% | 3–5 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-website-copy" aria-label="Website Copywriting Service">
         <h3>Website Copywriting</h3>
         <p>Writing engaging copy for web pages (Home, About, Services, etc.).</p>
         <p><strong>10–20 hrs | $75–$150/hr | 15–25% | 5–7 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-blog-writing" aria-label="Blog Writing Service">
         <h3>Blog Writing</h3>
         <p>Creating informative and SEO-friendly blog posts.</p>
         <p><strong>5–10 hrs | $50–$125/hr | 10–15% | 2–4 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-email-campaigns" aria-label="Email Campaigns Service">
         <h3>Email Campaigns</h3>
         <p>Writing compelling email sequences for marketing and lead nurturing.</p>
         <p><strong>5–10 hrs | $75–$150/hr | 10–20% | 3–5 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-product-descriptions" aria-label="Product Descriptions Service">
         <h3>Product Descriptions</h3>
         <p>Crafting clear and persuasive descriptions for products or services.</p>
         <p><strong>3–6 hrs | $50–$100/hr | 5–10% | 1–2 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-social-media-copy" aria-label="Social Media Content Service">
         <h3>Social Media Content</h3>
         <p>Writing copy for posts, ads, and captions optimized for social platforms.</p>
         <p><strong>5–10 hrs | $50–$100/hr | 10–15% | 2–3 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-ad-copywriting" aria-label="Ad Copywriting Service">
         <h3>Ad Copywriting</h3>
         <p>Creating high-converting ad copy for PPC or social ads.</p>
         <p><strong>5–8 hrs | $75–$150/hr | 10–20% | 2–4 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-seo-copywriting" aria-label="SEO Copywriting Service">
         <h3>SEO Copywriting</h3>
         <p>Writing keyword-optimized content to improve search engine rankings.</p>
         <p><strong>5–10 hrs | $75–$150/hr | 10–20% | 2–4 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-landing-page-copy" aria-label="Landing Page Copy Service">
         <h3>Landing Page Copy</h3>
         <p>Writing persuasive copy to drive conversions on targeted landing pages.</p>
         <p><strong>5–10 hrs | $100–$200/hr | 15–25% | 3–5 days</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="service-editing-proofreading" aria-label="Editing and Proofreading Service">
         <h3>Editing and Proofreading</h3>
         <p>Refining and polishing existing content for clarity, tone, and grammar.</p>
         <p><strong>3–6 hrs | $50–$100/hr | 5–10% | 1–2 days</strong></p>
       </div>
-
     </div>
   </section>
 
@@ -106,25 +95,21 @@
   <section id="copywriting-packages">
     <h2>Copywriting Packages</h2>
     <div class="courses-grid">
-
-      <div class="course-card">
+      <div class="course-card" id="package-web-copy-essentials" aria-label="Web Copy Essentials Package">
         <h3>Web Copy Essentials</h3>
         <p>Home, About, Services pages.</p>
         <p><strong>$750</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="package-conversion-copywriting" aria-label="Conversion Copywriting Package">
         <h3>Conversion Copywriting</h3>
         <p>Landing page + email campaign + ad copy.</p>
         <p><strong>$1,500</strong></p>
       </div>
-
-      <div class="course-card">
+      <div class="course-card" id="package-content-retainer" aria-label="Content Retainer Package">
         <h3>Content Retainer</h3>
         <p>Blog + email + social copy ongoing.</p>
         <p><strong>$2,000/month</strong></p>
       </div>
-
     </div>
   </section>
 
@@ -133,13 +118,17 @@
   ============================== -->
   <section class="cta">
     <h2>Request a Consultation</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Tell us about your copywriting needs..." rows="4"></textarea>
-      <button type="submit">Submit</button>
+    <form id="lead-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell us about your copywriting needs..." rows="4"></textarea>
+      <input type="hidden" name="source" id="form-source">
+      <button type="submit">Request a Consultation</button>
       <div id="form-response"></div>
     </form>
+    <script>
+      document.getElementById("form-source").value = window.location.pathname;
+    </script>
   </section>
 
   <!-- ==============================
@@ -148,8 +137,8 @@
   <footer>
     <p>&copy; 2025 FullStackEnterprise. All rights reserved.</p>
     <p>
-      <a href="#">Privacy Policy</a> | 
-      <a href="#">Terms of Service</a>
+      <a href="/privacy.html">Privacy Policy</a> | 
+      <a href="/terms.html">Terms of Service</a>
     </p>
   </footer>
 
