@@ -8,44 +8,49 @@
 </head>
 <body>
   <header>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
       <div class="logo">FullStack Enterprise</div>
       <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/courses.html">Courses</a></li>
-        <li><a href="/services.html">Services</a></li>
+        <li><a href="/" aria-label="Home Page">Home</a></li>
+        <li><a href="/courses.html" aria-label="Courses Page">Courses</a></li>
+        <li><a href="/services.html" aria-label="Services Page">Services</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Meta-Learning: META-LRNG</h1>
-    <p>Master any subject. Overcome mental resistance. Build lifelong learning systems.</p>
+  <!-- Pre-Sale Button -->
+  <section class="pre-sale-cta" aria-labelledby="pre-sale-title">
+    <h2 id="pre-sale-title" class="visually-hidden">Pre-Sale CTA</h2>
+    <button id="pre-sale-btn" aria-label="Pre-sale Purchase for Meta-Learning Course">Pre-Sale: Reserve Your Spot</button>
+  </section>
 
-    <!-- Pre-Sale Button -->
-    <button id="pre-sale-btn">Pre-Sale Access</button>
+  <!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">Meta-Learning: META-LRNG</h1>
+    <p>Master any subject. Overcome mental resistance. Build lifelong learning systems.</p>
   </section>
 
   <!-- Lead Capture Form -->
-  <section class="cta">
-    <h2>Join the Meta-Learning Newsletter</h2>
-    <form id="lead-form">
+  <section class="cta" aria-labelledby="newsletter-title">
+    <h2 id="newsletter-title">Join the Meta-Learning Newsletter</h2>
+    <form id="lead-form" aria-label="Meta-Learning Newsletter Signup">
+      <!-- Hidden UTM fields -->
       <input type="hidden" name="utm_source" id="utm_source">
       <input type="hidden" name="utm_medium" id="utm_medium">
       <input type="hidden" name="utm_campaign" id="utm_campaign">
       <input type="hidden" name="utm_content" id="utm_content">
 
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit" id="submit-btn">Subscribe</button>
+      <!-- Visible fields -->
+      <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true">
+      <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true">
+      <button type="submit" id="submit-btn" aria-label="Subscribe to Meta-Learning Newsletter">Subscribe</button>
     </form>
-    <p id="form-response"></p>
+    <p id="form-response" aria-live="polite"></p>
   </section>
 
   <!-- Course Overview -->
-  <section class="course-overview">
-    <h2>Course Objectives</h2>
+  <section class="course-overview" aria-labelledby="course-overview-title">
+    <h2 id="course-overview-title">Course Objectives</h2>
     <ul>
       <li>Master efficient learning techniques.</li>
       <li>Build personalized systems for lifelong knowledge and creativity.</li>
@@ -56,15 +61,67 @@
   </section>
 
   <!-- Modules -->
-  <section class="modules">
-    <h2>Course Modules</h2>
-    <!-- Modules 1–6 remain unchanged -->
-    <!-- ... (Keep your existing module content here) ... -->
+  <section class="modules" aria-labelledby="modules-title">
+    <h2 id="modules-title">Course Modules</h2>
+
+    <div class="module" id="module-1" aria-labelledby="module-1-title">
+      <h3 id="module-1-title">Module 1: Foundations of Meta-Learning</h3>
+      <ul>
+        <li id="lesson-1-1"><strong>Lesson 1.1:</strong> What is Meta-Learning? – Introduction to self-education, meta-cognition, and benefits of learning science.</li>
+        <li id="lesson-1-2"><strong>Lesson 1.2:</strong> The Learning Brain – Neuroplasticity, dopamine, serotonin, acetylcholine, managing emotions, overcoming brain fog.</li>
+        <li id="lesson-1-3"><strong>Lesson 1.3:</strong> Mental Health and Learning – Procrastination tools, mindfulness, meditation practices.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-2" aria-labelledby="module-2-title">
+      <h3 id="module-2-title">Module 2: Optimizing the Learning Process</h3>
+      <ul>
+        <li id="lesson-2-1"><strong>Lesson 2.1:</strong> Active Learning Techniques – Feynman Technique, spaced repetition, asking better questions.</li>
+        <li id="lesson-2-2"><strong>Lesson 2.2:</strong> Memory Mastery – Chunking, associative memory, memory palace techniques.</li>
+        <li id="lesson-2-3"><strong>Lesson 2.3:</strong> Time and Energy Management – Pareto Principle, Eisenhower Matrix, ultradian rhythm routines.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-3" aria-labelledby="module-3-title">
+      <h3 id="module-3-title">Module 3: Overcoming Resistance and Mental Clarity</h3>
+      <ul>
+        <li id="lesson-3-1"><strong>Lesson 3.1:</strong> Combatting Resistance – Psychological resistance, shadow work, The War of Art techniques.</li>
+        <li id="lesson-3-2"><strong>Lesson 3.2:</strong> Managing Mental Illness – ADHD, anxiety, depression techniques.</li>
+        <li id="lesson-3-3"><strong>Lesson 3.3:</strong> Designing Environments for Focus – Structuring physical and mental spaces.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-4" aria-labelledby="module-4-title">
+      <h3 id="module-4-title">Module 4: Creativity and Conceptual Networking</h3>
+      <ul>
+        <li id="lesson-4-1"><strong>Lesson 4.1:</strong> Symbolic Thinking – Jungian archetypes, sacred geometry, symbolic frameworks.</li>
+        <li id="lesson-4-2"><strong>Lesson 4.2:</strong> Summoning Creativity – Flow states, lateral thinking exercises, rituals for perspective.</li>
+        <li id="lesson-4-3"><strong>Lesson 4.3:</strong> Cross-Disciplinary Synthesis – Connecting ideas, personal conceptual networks.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-5" aria-labelledby="module-5-title">
+      <h3 id="module-5-title">Module 5: Metaphysics and Hermetic Principles in Learning</h3>
+      <ul>
+        <li id="lesson-5-1"><strong>Lesson 5.1:</strong> The Hermetic Framework – Principles of Mentalism, Correspondence, Polarity, Rhythm.</li>
+        <li id="lesson-5-2"><strong>Lesson 5.2:</strong> Consciousness and Mastery – Focus and creativity alignment with natural cycles.</li>
+        <li id="lesson-5-3"><strong>Lesson 5.3:</strong> Symbolic Systems for Mastery – Using Tarot, symbols, and metaphysical tools.</li>
+      </ul>
+    </div>
+
+    <div class="module" id="module-6" aria-labelledby="module-6-title">
+      <h3 id="module-6-title">Module 6: Lifelong Learning Systems</h3>
+      <ul>
+        <li id="lesson-6-1"><strong>Lesson 6.1:</strong> Personal Knowledge Management – Organize and synthesize knowledge digitally.</li>
+        <li id="lesson-6-2"><strong>Lesson 6.2:</strong> Daily Practices for Mastery – Mental, physical, emotional routines, reflection exercises.</li>
+        <li id="lesson-6-3"><strong>Lesson 6.3:</strong> Goal Setting for Lifelong Learning – Adaptable learning roadmaps with measurable outcomes.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- Learning Resources -->
-  <section class="resources">
-    <h2>Learning Resources</h2>
+  <section class="resources" aria-labelledby="resources-title">
+    <h2 id="resources-title">Learning Resources</h2>
     <ul>
       <li><strong>Make It Stick</strong> – Peter C. Brown</li>
       <li><strong>The Art of Learning</strong> – Josh Waitzkin</li>
@@ -83,8 +140,8 @@
   </section>
 
   <!-- Target Audience & USP -->
-  <section class="target-audience">
-    <h2>Who This Course is For</h2>
+  <section class="target-audience" aria-labelledby="audience-title">
+    <h2 id="audience-title">Who This Course is For</h2>
     <ul>
       <li>Self-learners and autodidacts</li>
       <li>Professionals seeking rapid skill acquisition</li>
@@ -92,7 +149,7 @@
       <li>Creatives looking to synthesize ideas across disciplines</li>
     </ul>
 
-    <h2>Unique Selling Points</h2>
+    <h2 id="usp-title">Unique Selling Points</h2>
     <ul>
       <li>Holistic Approach – Integrates neuroscience, psychology, and metaphysics.</li>
       <li>Transformative Practices – Builds lifelong learning habits with clarity and creativity.</li>
@@ -101,103 +158,83 @@
   </section>
 
   <!-- Lead Capture Form at Bottom -->
-  <section class="cta">
-    <h2>Sign Up for Updates on Meta-Learning</h2>
-    <form id="lead-form">
-      <input type="hidden" name="utm_source" id="utm_source">
-      <input type="hidden" name="utm_medium" id="utm_medium">
-      <input type="hidden" name="utm_campaign" id="utm_campaign">
-      <input type="hidden" name="utm_content" id="utm_content">
+  <section class="cta" aria-labelledby="newsletter-bottom-title">
+    <h2 id="newsletter-bottom-title">Sign Up for Updates on Meta-Learning</h2>
+    <form id="lead-form-bottom" aria-label="Meta-Learning Newsletter Signup Bottom">
+      <input type="hidden" name="utm_source" id="utm_source_bottom">
+      <input type="hidden" name="utm_medium" id="utm_medium_bottom">
+      <input type="hidden" name="utm_campaign" id="utm_campaign_bottom">
+      <input type="hidden" name="utm_content" id="utm_content_bottom">
 
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit" id="submit-btn">Subscribe</button>
+      <input type="text" name="name" placeholder="Your Name" required aria-required="true">
+      <input type="email" name="email" placeholder="Your Email" required aria-required="true">
+      <button type="submit" id="submit-btn-bottom" aria-label="Subscribe to Meta-Learning Newsletter Bottom">Subscribe</button>
     </form>
-    <p id="form-response"></p>
+    <p id="form-response-bottom" aria-live="polite"></p>
   </section>
 
-  <footer>
+  <footer aria-label="Site Footer">
     <p>
       <a href="/privacy.html">Privacy Policy</a> | 
       <a href="/terms.html">Terms of Service</a>
     </p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Lead Form Script -->
   <script>
-  // Pre-sale Stripe Button
-  document.getElementById("pre-sale-btn").addEventListener("click", async () => {
-    const priceId = "price_1S9qlrKQ07Xmklz7owOz55tz"; // Your pre-sale price ID
-    const successUrl = window.location.origin + "/thank-you.html";
-    const cancelUrl = window.location.href;
-
-    try {
-      const res = await fetch("/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId, successUrl, cancelUrl })
-      });
-      const data = await res.json();
-      if (data.success && data.session?.url) {
-        window.location.href = data.session.url;
-      } else {
-        console.error("Stripe session failed:", data);
-        alert("Failed to start checkout. Try again.");
-      }
-    } catch (err) {
-      console.error("Error creating Stripe session:", err);
-      alert("Network error. Try again.");
-    }
-  });
-
-  // Lead Capture Form
   (function() {
-    const form = document.getElementById("lead-form");
-    const btn = document.getElementById("submit-btn");
-    const response = document.getElementById("form-response");
+    function setupForm(formId, submitBtnId, responseId, utmSuffix = "") {
+      const form = document.getElementById(formId);
+      const btn = document.getElementById(submitBtnId);
+      const response = document.getElementById(responseId);
 
-    const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
-    const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
-    utmKeys.forEach(key => {
-      const value = params[key] || localStorage.getItem(key) || "";
-      document.getElementById(key).value = value;
-      if (params[key]) localStorage.setItem(key, params[key]);
-    });
+      const utmKeys = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const params = Object.fromEntries(new URLSearchParams(window.location.search).entries());
+      utmKeys.forEach(key => {
+        const value = params[key] || localStorage.getItem(key) || "";
+        const field = document.getElementById(key + utmSuffix);
+        if (field) field.value = value;
+        if (params[key]) localStorage.setItem(key, params[key]);
+      });
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.innerText = "Submitting...";
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = "Submitting...";
 
-      const formData = Object.fromEntries(new FormData(form).entries());
-      formData.page_url = window.location.href;
+        const formData = Object.fromEntries(new FormData(form).entries());
+        formData.page_url = window.location.href;
 
-      try {
-        const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
+        try {
+          const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/capture-lead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+          });
 
-        const result = await res.json();
-        if (result.success) {
-          response.innerText = "✅ Thanks for subscribing!";
-          response.style.color = "green";
-          form.reset();
-        } else {
-          response.innerText = "❌ Something went wrong. Try again.";
+          const result = await res.json();
+          if (result.success) {
+            response.innerText = "✅ Thanks for subscribing!";
+            response.style.color = "green";
+            form.reset();
+          } else {
+            response.innerText = "❌ Something went wrong. Try again.";
+            response.style.color = "red";
+            console.error("Worker error:", result);
+          }
+        } catch (err) {
+          response.innerText = "❌ Network error. Try again.";
           response.style.color = "red";
-          console.error("Worker error:", result);
+          console.error("Fetch error:", err);
+        } finally {
+          btn.disabled = false;
+          btn.innerText = "Subscribe";
         }
-      } catch (err) {
-        response.innerText = "❌ Network error. Try again.";
-        response.style.color = "red";
-        console.error("Fetch error:", err);
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "Subscribe";
-      }
-    });
+      });
+    }
+
+    setupForm("lead-form","submit-btn","form-response");
+    setupForm("lead-form-bottom","submit-btn-bottom","form-response-bottom","_bottom");
   })();
   </script>
 </body>
