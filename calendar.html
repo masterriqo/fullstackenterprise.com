@@ -12,11 +12,12 @@
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet">
   <style>
     /* Dark theme for FullCalendar */
-    .fc {
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto;
       background: #111;
-      color: #fff;
+      padding: 20px;
       border-radius: 8px;
-      padding: 10px;
     }
 
     .fc-toolbar-title {
@@ -55,6 +56,65 @@
     .fc-daygrid-day {
       background-color: #111;
       border: 1px solid #333;
+      cursor: pointer;
+    }
+
+    /* Modal styling */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.8);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .modal-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .modal-content form input,
+    .modal-content form button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .modal-content form input {
+      background: #333;
+      color: #fff;
+    }
+
+    .modal-content form button {
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #closeModal {
+      background: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #closeModal:hover {
+      background: #666;
     }
   </style>
 </head>
@@ -72,8 +132,8 @@
       <form id="bookingForm">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
-        <input type="datetime-local" name="start_time" required>
-        <input type="datetime-local" name="end_time" required>
+        <input type="hidden" name="start_time">
+        <input type="hidden" name="end_time">
         <button type="submit">Confirm Booking</button>
       </form>
       <button id="closeModal">Cancel</button>
@@ -82,7 +142,64 @@
 
   <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.js"></script>
-  <script src="calendar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar');
+      const bookingModal = document.getElementById('bookingModal');
+      const bookingForm = document.getElementById('bookingForm');
+      const closeModalBtn = document.getElementById('closeModal');
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        selectable: true,
+        events: '/bookings.json', // Worker route returning JSON of bookings
+        select: function(info) {
+          // Populate hidden inputs in modal
+          bookingForm.start_time.value = info.startStr;
+          bookingForm.end_time.value = info.endStr;
+          bookingModal.classList.remove('hidden');
+        },
+        eventColor: '#007bff',
+      });
+
+      calendar.render();
+
+      // Close modal
+      closeModalBtn.addEventListener('click', () => bookingModal.classList.add('hidden'));
+
+      // Handle booking form submission
+      bookingForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(bookingForm);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          start_time: formData.get('start_time'),
+          end_time: formData.get('end_time')
+        };
+
+        try {
+          const res = await fetch('/book-consult', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          const json = await res.json();
+          if (json.success) {
+            alert('Booking confirmed!');
+            bookingModal.classList.add('hidden');
+            calendar.refetchEvents();
+          } else {
+            alert('Error: ' + (json.error || 'Unknown error'));
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Failed to submit booking.');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
