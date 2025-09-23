@@ -93,6 +93,7 @@
     }
 
     .modal-content form input,
+    .modal-content form select,
     .modal-content form button {
       width: 100%;
       margin-bottom: 10px;
@@ -101,7 +102,8 @@
       border-radius: 6px;
     }
 
-    .modal-content form input {
+    .modal-content form input,
+    .modal-content form select {
       background: #333;
       color: #fff;
     }
@@ -142,6 +144,13 @@
         <input type="email" name="email" placeholder="Your Email" required>
         <input type="hidden" name="start_time">
         <input type="hidden" name="end_time">
+
+        <!-- Time Slot Picker -->
+        <label style="color:#fff; margin-bottom:5px;">Select Time Slot:</label>
+        <select id="timeSlot" required>
+          <!-- Options populated dynamically -->
+        </select>
+
         <button type="submit">Confirm Booking</button>
       </form>
       <button id="closeModal">Cancel</button>
@@ -156,6 +165,42 @@
       const modal = document.getElementById('bookingModal');
       const closeModalBtn = document.getElementById('closeModal');
       const bookingForm = document.getElementById('bookingForm');
+      const timeSlotSelect = document.getElementById('timeSlot');
+
+      // Generate all time slots (9AM-5PM)
+      const generateTimeSlots = (bookedSlots = []) => {
+        timeSlotSelect.innerHTML = '';
+        for(let hour=9; hour<=17; hour++) {
+          const start = hour.toString().padStart(2,'0') + ':00';
+          const endHour = hour+1;
+          const end = endHour.toString().padStart(2,'0') + ':00';
+          const slotValue = `${start}-${end}`;
+          const option = document.createElement('option');
+          option.value = slotValue;
+          option.textContent = slotValue;
+          if (bookedSlots.includes(slotValue)) {
+            option.disabled = true;
+            option.textContent += ' (Booked)';
+          }
+          timeSlotSelect.appendChild(option);
+        }
+      };
+
+      const fetchBookedSlots = async (date) => {
+        try {
+          const resp = await fetch(`/bookings.json?date=${date}`);
+          if (!resp.ok) return [];
+          const bookings = await resp.json();
+          return bookings.map(b => {
+            const startHour = new Date(b.start_time).getHours().toString().padStart(2,'0');
+            const endHour = new Date(b.end_time).getHours().toString().padStart(2,'0');
+            return `${startHour}:00-${endHour}:00`;
+          });
+        } catch (err) {
+          console.error('Failed to fetch booked slots', err);
+          return [];
+        }
+      };
 
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -167,13 +212,16 @@
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        events: '/bookings.json', // Worker route that returns existing bookings
-        dateClick: function(info) {
-          // Set hidden inputs for start/end (default 1 hour slot)
-          const start = new Date(info.date);
-          const end = new Date(start.getTime() + 60*60*1000); // +1 hour
-          bookingForm.start_time.value = start.toISOString();
-          bookingForm.end_time.value = end.toISOString();
+        events: '/bookings.json',
+        dateClick: async function(info) {
+          bookingForm.start_time.value = '';
+          bookingForm.end_time.value = '';
+          modal.dataset.date = info.dateStr;
+
+          // Fetch booked slots and generate dropdown
+          const bookedSlots = await fetchBookedSlots(info.dateStr);
+          generateTimeSlots(bookedSlots);
+
           modal.classList.remove('hidden');
         },
       });
@@ -186,6 +234,14 @@
         e.preventDefault();
         const formData = new FormData(bookingForm);
         const data = Object.fromEntries(formData.entries());
+
+        // Get selected time slot
+        const [startHour, endHour] = timeSlotSelect.value.split('-');
+        const selectedDate = modal.dataset.date;
+        const startTime = new Date(`${selectedDate}T${startHour}:00`);
+        const endTime = new Date(`${selectedDate}T${endHour}:00`);
+        data.start_time = startTime.toISOString();
+        data.end_time = endTime.toISOString();
 
         try {
           const resp = await fetch('/book-consult', {
