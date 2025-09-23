@@ -68,6 +68,12 @@
       cursor: not-allowed;
     }
 
+    .calendar-dates .fully-booked {
+      background: #550000;
+      color: #999;
+      cursor: not-allowed;
+    }
+
     /* Modal styling */
     .modal {
       position: fixed;
@@ -160,12 +166,26 @@
       const timeSlotSelect = document.getElementById('timeSlot');
 
       let currentDate = new Date();
+      let bookedDatesMap = {};
+
+      async function fetchAllBookings() {
+        try {
+          const resp = await fetch('/bookings.json');
+          if(!resp.ok) return [];
+          const bookings = await resp.json();
+          bookedDatesMap = {};
+          bookings.forEach(b => {
+            const dateKey = b.start.split('T')[0];
+            if(!bookedDatesMap[dateKey]) bookedDatesMap[dateKey] = [];
+            bookedDatesMap[dateKey].push(`${b.start}-${b.end}`);
+          });
+        } catch(err){ console.error(err); }
+      }
 
       function renderCalendar(date) {
         const year = date.getFullYear();
         const month = date.getMonth();
-        const today = new Date();
-        today.setHours(0,0,0,0);
+        const today = new Date(); today.setHours(0,0,0,0);
 
         const firstDay = new Date(year, month, 1);
         const lastDay = new Date(year, month + 1, 0);
@@ -179,16 +199,16 @@
           const dayCell = document.createElement('div');
           dayCell.textContent = day;
           const cellDate = new Date(year, month, day);
+          const dateKey = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
 
-          if(cellDate < today) {
-            dayCell.classList.add('past');
-          } else {
+          if(cellDate < today) dayCell.classList.add('past');
+          else if(bookedDatesMap[dateKey] && bookedDatesMap[dateKey].length >= 9) dayCell.classList.add('fully-booked'); // all slots booked
+          else {
             dayCell.addEventListener('click', async () => {
               bookingForm.start_time.value = '';
               bookingForm.end_time.value = '';
-              modal.dataset.date = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-              const bookedSlots = await fetchBookedSlots(modal.dataset.date);
-              generateTimeSlots(bookedSlots);
+              modal.dataset.date = dateKey;
+              generateTimeSlots(bookedDatesMap[dateKey] || []);
               modal.classList.remove('hidden');
             });
           }
@@ -196,52 +216,26 @@
         }
       }
 
-      prevMonthBtn.addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar(currentDate);
-      });
-
-      nextMonthBtn.addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar(currentDate);
-      });
-
       function generateTimeSlots(bookedSlots = []) {
         timeSlotSelect.innerHTML = '';
-        for (let hour = 9; hour <= 17; hour++) {
+        for(let hour=9; hour<=17; hour++){
           const start = new Date(); start.setHours(hour,0,0,0);
           const end = new Date(); end.setHours(hour+1,0,0,0);
-
-          const optionsStart = start.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York' });
-          const optionsEnd = end.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York' });
-          const slotValue = `${optionsStart}-${optionsEnd}`;
-
+          const startStr = start.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:'America/New_York'});
+          const endStr = end.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:'America/New_York'});
+          const value = `${startStr}-${endStr}`;
           const option = document.createElement('option');
-          option.value = slotValue;
-          option.textContent = slotValue;
-          if(bookedSlots.includes(slotValue)) { option.disabled = true; option.textContent += ' (Booked)'; }
+          option.value = value;
+          option.textContent = value;
+          if(bookedSlots.includes(value)){ option.disabled=true; option.textContent += ' (Booked)'; }
           timeSlotSelect.appendChild(option);
         }
       }
 
-      async function fetchBookedSlots(date) {
-        try {
-          const resp = await fetch(`/bookings.json?date=${date}`);
-          if(!resp.ok) return [];
-          const bookings = await resp.json();
-          return bookings.map(b => {
-            const start = new Date(b.start_time).toLocaleTimeString('en-US',{ hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York' });
-            const end = new Date(b.end_time).toLocaleTimeString('en-US',{ hour:'numeric', minute:'2-digit', hour12:true, timeZone:'America/New_York' });
-            return `${start}-${end}`;
-          });
-        } catch(err) { console.error('Failed to fetch booked slots', err); return []; }
-      }
-
-      bookingForm.addEventListener('submit', async (e) => {
+      bookingForm.addEventListener('submit', async e => {
         e.preventDefault();
         const formData = new FormData(bookingForm);
         const data = Object.fromEntries(formData.entries());
-
         const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
         const selectedDate = modal.dataset.date;
 
@@ -250,14 +244,17 @@
         data.start_time = startTime.toISOString();
         data.end_time = endTime.toISOString();
 
-        try {
-          const resp = await fetch('/book-consult', {
-            method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)
-          });
+        try{
+          const resp = await fetch('/book-consult', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
           const result = await resp.json();
-          if(resp.ok){ alert('Booking confirmed!'); modal.classList.add('hidden'); bookingForm.reset(); renderCalendar(currentDate); }
-          else alert(result.error || 'Booking failed');
-        } catch(err){ alert('Network error, please try again.'); }
+          if(resp.ok){
+            alert('Booking confirmed!');
+            modal.classList.add('hidden');
+            bookingForm.reset();
+            await fetchAllBookings();
+            renderCalendar(currentDate);
+          } else alert(result.error || 'Booking failed');
+        }catch(err){ alert('Network error, please try again.'); }
       });
 
       function convertTo24Hour(timeStr){
@@ -268,9 +265,12 @@
         return `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}`;
       }
 
-      closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
+      closeModalBtn.addEventListener('click', ()=>modal.classList.add('hidden'));
+      prevMonthBtn.addEventListener('click', ()=>{ currentDate.setMonth(currentDate.getMonth()-1); renderCalendar(currentDate); });
+      nextMonthBtn.addEventListener('click', ()=>{ currentDate.setMonth(currentDate.getMonth()+1); renderCalendar(currentDate); });
 
-      renderCalendar(currentDate);
+      // Initial load
+      fetchAllBookings().then(()=>renderCalendar(currentDate));
     });
   </script>
 </body>
