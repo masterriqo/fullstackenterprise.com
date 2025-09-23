@@ -2,8 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Service Fit Form</title>
-  <link rel="stylesheet" href="style.css"> <!-- Link to your full CSS file -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Fit Form | FullStackEnterprise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Dropdown container styling */
+    .dropdown {
+      margin: 15px 0;
+      border-radius: 8px;
+      background: #111;
+      padding: 12px;
+      color: #fff;
+    }
+
+    .dropdown button {
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .dropdown button:hover {
+      background: #0056b3;
+    }
+
+    .dropdown-content {
+      display: none;
+      margin-top: 10px;
+      padding-left: 15px;
+      color: #ccc;
+    }
+
+    .dropdown-content ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .dropdown-content li {
+      margin-bottom: 5px;
+    }
+
+    /* Form styling */
+    #quizForm {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      color: #fff;
+    }
+
+    #quizForm h1 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background: #28a745;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: #218838;
+    }
+
+    #result.hidden {
+      display: none;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background: #333;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
 
@@ -34,6 +130,124 @@
         <label><input type="checkbox" name="services" value="Project Management"> Project Management</label>
         <label><input type="checkbox" name="services" value="Finance & Biz Strategy"> Finance & Biz Strategy</label>
         <label><input type="checkbox" name="services" value="Career Development"> Career Development</label>
+      </div>
+
+      <!-- Service Dropdowns -->
+      <div class="section">
+        <h3>Explore Individual Jobs for Each Service</h3>
+
+        <div class="dropdown">
+          <button type="button">Web Development</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Website Setup</li>
+              <li>Theme Customization</li>
+              <li>Content Integration</li>
+              <li>E-commerce Setup</li>
+              <li>SEO Setup</li>
+              <li>Blog Setup</li>
+              <li>Contact Forms & Email Integration</li>
+              <li>Mobile Responsiveness</li>
+              <li>Social Media Integration</li>
+              <li>Website Maintenance</li>
+              <li>Analytics & Reporting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">Digital Marketing</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Marketing Strategy Development</li>
+              <li>Social Media Management</li>
+              <li>SEO Optimization</li>
+              <li>Content Creation</li>
+              <li>Paid Advertising</li>
+              <li>Email Marketing</li>
+              <li>Analytics & Reporting</li>
+              <li>Conversion Rate Optimization</li>
+              <li>Influencer Marketing</li>
+              <li>Brand Reputation Management</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">Copywriting</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Website Copy</li>
+              <li>Email Campaigns</li>
+              <li>Sales Pages</li>
+              <li>Ad Copywriting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">Analytics & SEO</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>SEO Audit</li>
+              <li>Keyword Research</li>
+              <li>On-page Optimization</li>
+              <li>Technical SEO</li>
+              <li>Link Building</li>
+              <li>Analytics Setup & Monitoring</li>
+              <li>Competitor Analysis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">AI Automation</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Workflow Automation</li>
+              <li>Chatbot Integration</li>
+              <li>Email Sequence Automation</li>
+              <li>CRM Automation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">Project Management</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Project Planning</li>
+              <li>Task Management</li>
+              <li>Agile/Scrum Coaching</li>
+              <li>Resource Allocation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">Finance & Biz Strategy</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Accounting Support</li>
+              <li>Financial Modeling</li>
+              <li>Investment Strategy</li>
+              <li>Bookkeeping</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button type="button">Career Development</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Resume Writing</li>
+              <li>Interview Coaching</li>
+              <li>Career Strategy Consulting</li>
+              <li>Job Search Support</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
       <!-- Existing Platform -->
@@ -79,7 +293,19 @@
     <div id="result" class="hidden"></div>
   </section>
 
+  <!-- ==============================
+       JS
+  ============================== -->
   <script>
+    // Dropdown toggle
+    document.querySelectorAll('.dropdown button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Form submission
     document.querySelector("#quizForm form").addEventListener("submit", async function(e) {
       e.preventDefault();
       const form = e.target;
