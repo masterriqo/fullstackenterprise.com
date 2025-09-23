@@ -205,7 +205,8 @@ h2 {
 /* ==============================
    CALL-TO-ACTION / FORMS
 ============================== */
-.cta {
+.cta,
+#quizForm {
   width: 100%;
   max-width: 600px;
   background: #111;
@@ -213,22 +214,29 @@ h2 {
   margin: 40px auto;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
-  text-align: center;
 }
 
-.cta h2 {
-  font-size: 1.75rem;
+.cta h2,
+#quizForm h1,
+#quizForm h3 {
+  color: #fff;
   margin-bottom: 20px;
 }
 
-.cta form {
+.cta form,
+#quizForm form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 .cta input,
-.cta textarea {
+.cta textarea,
+#quizForm input[type="text"],
+#quizForm input[type="email"],
+#quizForm input[type="number"],
+#quizForm select,
+#quizForm textarea {
   width: 100%;
   padding: 12px;
   border-radius: 6px;
@@ -239,17 +247,30 @@ h2 {
 }
 
 .cta input::placeholder,
-.cta textarea::placeholder {
+.cta textarea::placeholder,
+#quizForm input::placeholder,
+#quizForm textarea::placeholder {
   color: #777;
 }
 
 .cta input:focus,
-.cta textarea:focus {
+.cta textarea:focus,
+#quizForm input:focus,
+#quizForm select:focus,
+#quizForm textarea:focus {
   outline: none;
   border-color: #007bff;
 }
 
-.cta button {
+/* Checkboxes */
+#quizForm input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #007bff;
+}
+
+/* Buttons */
+.cta button,
+#quizForm button {
   padding: 12px;
   border-radius: 6px;
   border: none;
@@ -261,27 +282,30 @@ h2 {
   transition: background 0.2s ease;
 }
 
-.cta button:hover:not(:disabled) {
+.cta button:hover:not(:disabled),
+#quizForm button:hover:not(:disabled) {
   background: #0056b3;
 }
 
-.cta button:disabled {
+.cta button:disabled,
+#quizForm button:disabled {
   background: #444;
   cursor: not-allowed;
 }
 
-/* Form Response - supports multiple forms */
+/* Form Response */
+#result,
 #form-response,
 #form-response-top,
 #form-response-bottom {
-  margin-top: 15px;
+  margin-top: 20px;
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1rem;
   text-align: center;
 }
 
 /* ==============================
-   PRESALE BUTTON (match newsletter CTA)
+   PRESALE BUTTON
 ============================== */
 #presale-btn {
   padding: 12px;
@@ -356,5 +380,18 @@ footer a:hover {
 
   #presale-btn {
     max-width: 100%;
+  }
+
+  #quizForm {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  #quizForm h1 {
+    font-size: 1.75rem;
+  }
+
+  #quizForm h3 {
+    font-size: 1.25rem;
   }
 }
