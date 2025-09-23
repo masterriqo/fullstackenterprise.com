@@ -4,12 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Consultation</title>
-  <link rel="stylesheet" href="calendar.css">
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css">
+
   <!-- FullCalendar -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet">
+  <style>
+    /* Dark theme for FullCalendar */
+    .fc {
+      background: #111;
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .fc-toolbar-title {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .fc-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .fc-button:hover {
+      background-color: #0056b3;
+    }
+
+    .fc-daygrid-event {
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .fc-daygrid-day-number {
+      color: #fff;
+    }
+
+    .fc-scrollgrid {
+      border-color: #333;
+    }
+
+    .fc-daygrid-day {
+      background-color: #111;
+      border: 1px solid #333;
+    }
+  </style>
 </head>
 <body>
-  <div id="calendar"></div>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom: 20px;">Book a Consultation</h2>
+    <div id="calendar"></div>
+  </section>
 
   <!-- Booking Modal -->
   <div id="bookingModal" class="modal hidden">
@@ -26,7 +80,9 @@
     </div>
   </div>
 
+  <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.js"></script>
   <script src="calendar.js"></script>
+
 </body>
 </html>
