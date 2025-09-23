@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Consultation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <form id="calendarForm">
+    <h1>Book a Consultation</h1>
+    <div class="section">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+    </div>
+
+    <div class="section">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+    </div>
+
+    <div class="section">
+      <label for="start_time">Start Time</label>
+      <input type="datetime-local" id="start_time" name="start_time" required />
+    </div>
+
+    <div class="section">
+      <label for="end_time">End Time</label>
+      <input type="datetime-local" id="end_time" name="end_time" required />
+    </div>
+
+    <button type="submit">Book Consultation</button>
+
+    <div id="calendarResult"></div>
+  </form>
+
+  <script src="calendar.js"></script>
+</body>
+</html>
