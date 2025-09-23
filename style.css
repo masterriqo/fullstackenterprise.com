@@ -358,6 +358,62 @@ h2 {
 }
 
 /* ==============================
+   CALENDAR + MODAL
+============================== */
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.8);
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+}
+
+.modal-content form input,
+.modal-content form button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.modal-content form input {
+  background: #333;
+  color: #fff;
+}
+
+.modal-content form button {
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ==============================
    FOOTER
 ============================== */
 footer {
@@ -377,7 +433,6 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-
 
 /* ==============================
    RESPONSIVE
