@@ -19,6 +19,7 @@
       background: #111;
       padding: 20px;
       border-radius: 8px;
+      height: 700px; /* explicit height so calendar renders */
     }
 
     .fc {
@@ -192,8 +193,8 @@
           if (!resp.ok) return [];
           const bookings = await resp.json();
           return bookings.map(b => {
-            const startHour = new Date(b.start_time).getHours().toString().padStart(2,'0');
-            const endHour = new Date(b.end_time).getHours().toString().padStart(2,'0');
+            const startHour = new Date(b.start).getHours().toString().padStart(2,'0');
+            const endHour = new Date(b.end).getHours().toString().padStart(2,'0');
             return `${startHour}:00-${endHour}:00`;
           });
         } catch (err) {
@@ -204,7 +205,7 @@
 
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        height: 'auto',
+        height: '100%', // fill the container's height
         selectable: true,
         selectMirror: true,
         headerToolbar: {
@@ -235,7 +236,6 @@
         const formData = new FormData(bookingForm);
         const data = Object.fromEntries(formData.entries());
 
-        // Get selected time slot
         const [startHour, endHour] = timeSlotSelect.value.split('-');
         const selectedDate = modal.dataset.date;
         const startTime = new Date(`${selectedDate}T${startHour}:00`);
