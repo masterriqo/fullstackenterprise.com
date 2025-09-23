@@ -71,6 +71,12 @@
       background: #007bff;
     }
 
+    .calendar-dates .past {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+    }
+
     /* Modal styling */
     .modal {
       position: fixed;
@@ -183,7 +189,6 @@
     </div>
   </div>
 
-  <!-- Calendar + Booking Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const monthYear = document.getElementById('monthYear');
@@ -201,6 +206,9 @@
       function renderCalendar(date) {
         const year = date.getFullYear();
         const month = date.getMonth();
+        const today = new Date();
+        today.setHours(0,0,0,0);
+
         const firstDay = new Date(year, month, 1);
         const lastDay = new Date(year, month + 1, 0);
 
@@ -218,17 +226,21 @@
           const dayCell = document.createElement('div');
           dayCell.textContent = day;
 
-          dayCell.addEventListener('click', async () => {
-            bookingForm.start_time.value = '';
-            bookingForm.end_time.value = '';
-            modal.dataset.date = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+          const cellDate = new Date(year, month, day);
+          if(cellDate < today) {
+            dayCell.classList.add('past');
+          } else {
+            dayCell.addEventListener('click', async () => {
+              bookingForm.start_time.value = '';
+              bookingForm.end_time.value = '';
+              modal.dataset.date = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
 
-            // Fetch booked slots (from server)
-            const bookedSlots = await fetchBookedSlots(modal.dataset.date);
-            generateTimeSlots(bookedSlots);
+              const bookedSlots = await fetchBookedSlots(modal.dataset.date);
+              generateTimeSlots(bookedSlots);
 
-            modal.classList.remove('hidden');
-          });
+              modal.classList.remove('hidden');
+            });
+          }
 
           calendarDates.appendChild(dayCell);
         }
@@ -244,21 +256,29 @@
         renderCalendar(currentDate);
       });
 
-      // Time slots generator
       function generateTimeSlots(bookedSlots = []) {
         timeSlotSelect.innerHTML = '';
         for (let hour = 9; hour <= 17; hour++) {
-          const start = hour.toString().padStart(2,'0') + ':00';
-          const endHour = hour + 1;
-          const end = endHour.toString().padStart(2,'0') + ':00';
-          const slotValue = `${start}-${end}`;
+          let start = new Date();
+          start.setHours(hour);
+          start.setMinutes(0);
+          start.setSeconds(0);
+
+          let end = new Date(start);
+          end.setHours(hour+1);
+
+          const optionsStart = start.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' });
+          const optionsEnd = end.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' });
+          const slotValue = `${optionsStart}-${optionsEnd}`;
+
           const option = document.createElement('option');
           option.value = slotValue;
           option.textContent = slotValue;
-          if (bookedSlots.includes(slotValue)) {
+          if(bookedSlots.includes(slotValue)) {
             option.disabled = true;
             option.textContent += ' (Booked)';
           }
+
           timeSlotSelect.appendChild(option);
         }
       }
@@ -266,29 +286,30 @@
       async function fetchBookedSlots(date) {
         try {
           const resp = await fetch(`/bookings.json?date=${date}`);
-          if (!resp.ok) return [];
+          if(!resp.ok) return [];
           const bookings = await resp.json();
+
           return bookings.map(b => {
-            const startHour = new Date(b.start).getHours().toString().padStart(2,'0');
-            const endHour = new Date(b.end).getHours().toString().padStart(2,'0');
-            return `${startHour}:00-${endHour}:00`;
+            const start = new Date(b.start_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' });
+            const end = new Date(b.end_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' });
+            return `${start}-${end}`;
           });
-        } catch (err) {
+        } catch(err) {
           console.error('Failed to fetch booked slots', err);
           return [];
         }
       }
 
-      // Booking form submission
       bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(bookingForm);
         const data = Object.fromEntries(formData.entries());
 
-        const [startHour, endHour] = timeSlotSelect.value.split('-');
+        const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
         const selectedDate = modal.dataset.date;
-        const startTime = new Date(`${selectedDate}T${startHour}:00`);
-        const endTime = new Date(`${selectedDate}T${endHour}:00`);
+
+        const startTime = new Date(`${selectedDate}T${convertTo24Hour(startTimeStr)}:00`);
+        const endTime = new Date(`${selectedDate}T${convertTo24Hour(endTimeStr)}:00`);
         data.start_time = startTime.toISOString();
         data.end_time = endTime.toISOString();
 
@@ -298,25 +319,32 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
           });
-
           const result = await resp.json();
-          if (resp.ok) {
+          if(resp.ok) {
             alert('Booking confirmed!');
             modal.classList.add('hidden');
             bookingForm.reset();
           } else {
             alert(result.error || 'Booking failed');
           }
-        } catch (err) {
+        } catch(err) {
           alert('Network error, please try again.');
         }
       });
 
+      function convertTo24Hour(timeStr) {
+        const [time, modifier] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        if(modifier === 'PM' && hours < 12) hours += 12;
+        if(modifier === 'AM' && hours === 12) hours = 0;
+        return `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}`;
+      }
+
       closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
 
-      // Render initial calendar
       renderCalendar(currentDate);
     });
   </script>
+
 </body>
 </html>
