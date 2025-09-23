@@ -214,6 +214,7 @@ h2 {
   margin: 40px auto;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255,255,255,0.05);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta h2,
@@ -223,6 +224,20 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* Form sections hover */
+#quizForm .section {
+  padding: 15px;
+  border-radius: 8px;
+  background: #111;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#quizForm .section:hover {
+  background: #1a1a1a;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+/* Form input, select, textarea */
 .cta form,
 #quizForm form {
   display: flex;
@@ -244,6 +259,7 @@ h2 {
   background: #222;
   color: #fff;
   font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta input::placeholder,
@@ -260,12 +276,20 @@ h2 {
 #quizForm textarea:focus {
   outline: none;
   border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.5);
 }
 
 /* Checkboxes */
 #quizForm input[type="checkbox"] {
   margin-right: 10px;
   accent-color: #007bff;
+  transition: accent-color 0.3s ease;
+}
+
+/* Checkbox label hover */
+#quizForm label:hover {
+  color: #007bff;
+  cursor: pointer;
 }
 
 /* Buttons */
@@ -279,12 +303,13 @@ h2 {
   cursor: pointer;
   background: #007bff;
   color: #fff;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .cta button:hover:not(:disabled),
 #quizForm button:hover:not(:disabled) {
   background: #0056b3;
+  transform: translateY(-2px);
 }
 
 .cta button:disabled,
