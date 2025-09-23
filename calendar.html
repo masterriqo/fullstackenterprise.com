@@ -10,14 +10,14 @@
 
   <!-- FullCalendar -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet">
+
   <style>
     /* Dark theme for FullCalendar */
-    #calendar {
-      max-width: 900px;
-      margin: 0 auto;
+    .fc {
       background: #111;
-      padding: 20px;
+      color: #fff;
       border-radius: 8px;
+      padding: 10px;
     }
 
     .fc-toolbar-title {
@@ -56,65 +56,6 @@
     .fc-daygrid-day {
       background-color: #111;
       border: 1px solid #333;
-      cursor: pointer;
-    }
-
-    /* Modal styling */
-    .modal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0,0,0,0.8);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .modal-content {
-      background: #222;
-      padding: 20px;
-      border-radius: 8px;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .modal-content h2 {
-      margin-bottom: 15px;
-      color: #fff;
-    }
-
-    .modal-content form input,
-    .modal-content form button {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    .modal-content form input {
-      background: #333;
-      color: #fff;
-    }
-
-    .modal-content form button {
-      background: #007bff;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    #closeModal {
-      background: #444;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    #closeModal:hover {
-      background: #666;
     }
   </style>
 </head>
@@ -145,61 +86,56 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const calendarEl = document.getElementById('calendar');
-      const bookingModal = document.getElementById('bookingModal');
-      const bookingForm = document.getElementById('bookingForm');
+      const modal = document.getElementById('bookingModal');
       const closeModalBtn = document.getElementById('closeModal');
+      const bookingForm = document.getElementById('bookingForm');
 
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
+        height: 'auto',
         selectable: true,
-        events: '/bookings.json', // Worker route returning JSON of bookings
-        select: function(info) {
-          // Populate hidden inputs in modal
-          bookingForm.start_time.value = info.startStr;
-          bookingForm.end_time.value = info.endStr;
-          bookingModal.classList.remove('hidden');
+        selectMirror: true,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        eventColor: '#007bff',
+        events: '/bookings.json', // fetch from Worker
+        dateClick: function(info) {
+          // Set hidden inputs for start/end (default 1 hour slot)
+          const start = new Date(info.date);
+          const end = new Date(start.getTime() + 60*60*1000); // +1 hour
+          bookingForm.start_time.value = start.toISOString();
+          bookingForm.end_time.value = end.toISOString();
+          modal.classList.remove('hidden');
+        },
       });
 
       calendar.render();
 
-      // Close modal
-      closeModalBtn.addEventListener('click', () => bookingModal.classList.add('hidden'));
+      closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
 
-      // Handle booking form submission
-      bookingForm.addEventListener('submit', async function(e) {
+      bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(bookingForm);
-        const data = {
-          name: formData.get('name'),
-          email: formData.get('email'),
-          start_time: formData.get('start_time'),
-          end_time: formData.get('end_time')
-        };
+        const data = Object.fromEntries(formData.entries());
 
-        try {
-          const res = await fetch('/book-consult', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
+        const resp = await fetch('/book-consult', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
 
-          const json = await res.json();
-          if (json.success) {
-            alert('Booking confirmed!');
-            bookingModal.classList.add('hidden');
-            calendar.refetchEvents();
-          } else {
-            alert('Error: ' + (json.error || 'Unknown error'));
-          }
-        } catch (err) {
-          console.error(err);
-          alert('Failed to submit booking.');
+        const result = await resp.json();
+        if (resp.ok) {
+          alert('Booking confirmed!');
+          calendar.refetchEvents();
+          modal.classList.add('hidden');
+        } else {
+          alert(result.error || 'Booking failed');
         }
       });
     });
   </script>
-
 </body>
 </html>
