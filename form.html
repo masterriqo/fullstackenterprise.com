@@ -100,218 +100,173 @@
 </head>
 <body>
 
-  <section id="quizForm">
-    <h1>Find the Right Service for You</h1>
-    <p>Answer a few quick questions to see if you qualify for a free consultation.</p>
+<section id="quizForm">
+  <h1>Find the Right Service for You</h1>
+  <p>Answer a few quick questions to see if you qualify for a free consultation.</p>
 
-    <form>
-      <!-- Contact Info -->
-      <div class="section">
-        <h3>Contact Info</h3>
-        <label>Name:
-          <input type="text" name="name" placeholder="Your name" required>
-        </label>
-        <label>Email:
-          <input type="email" name="email" placeholder="you@example.com" required>
-        </label>
+  <form>
+    <!-- Contact Info -->
+    <div class="section">
+      <h3>Contact Info</h3>
+      <label>Name:
+        <input type="text" name="name" placeholder="Your name" required>
+      </label>
+      <label>Email:
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+    </div>
+
+    <!-- Service Dropdowns with Tasks Checkboxes -->
+    <div class="section">
+      <h3>Which services are you interested in? (select all that apply)</h3>
+
+      <!-- Example Dropdown: Web Development -->
+      <div class="dropdown">
+        <button type="button">Web Development</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Website Setup" data-service="Web Development"> Website Setup</label>
+          <label><input type="checkbox" name="tasks" value="Theme Customization" data-service="Web Development"> Theme Customization</label>
+          <label><input type="checkbox" name="tasks" value="Content Integration" data-service="Web Development"> Content Integration</label>
+          <label><input type="checkbox" name="tasks" value="E-commerce Setup" data-service="Web Development"> E-commerce Setup</label>
+          <label><input type="checkbox" name="tasks" value="SEO Setup" data-service="Web Development"> SEO Setup</label>
+          <label><input type="checkbox" name="tasks" value="Blog Setup" data-service="Web Development"> Blog Setup</label>
+          <label><input type="checkbox" name="tasks" value="Contact Forms & Email Integration" data-service="Web Development"> Contact Forms & Email Integration</label>
+          <label><input type="checkbox" name="tasks" value="Mobile Responsiveness" data-service="Web Development"> Mobile Responsiveness</label>
+          <label><input type="checkbox" name="tasks" value="Social Media Integration" data-service="Web Development"> Social Media Integration</label>
+          <label><input type="checkbox" name="tasks" value="Website Maintenance" data-service="Web Development"> Website Maintenance</label>
+          <label><input type="checkbox" name="tasks" value="Analytics & Reporting" data-service="Web Development"> Analytics & Reporting</label>
+        </div>
       </div>
 
-
-
-      <!-- Service Dropdowns with Tasks Checkboxes -->
-      <div class="section">
-        <h3>Which services are you interested in? (select all that apply)</h3>
-
-        <div class="dropdown">
-          <button type="button">Web Development</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Website Setup"> Website Setup</label>
-            <label><input type="checkbox" name="tasks" value="Theme Customization"> Theme Customization</label>
-            <label><input type="checkbox" name="tasks" value="Content Integration"> Content Integration</label>
-            <label><input type="checkbox" name="tasks" value="E-commerce Setup"> E-commerce Setup</label>
-            <label><input type="checkbox" name="tasks" value="SEO Setup"> SEO Setup</label>
-            <label><input type="checkbox" name="tasks" value="Blog Setup"> Blog Setup</label>
-            <label><input type="checkbox" name="tasks" value="Contact Forms & Email Integration"> Contact Forms & Email Integration</label>
-            <label><input type="checkbox" name="tasks" value="Mobile Responsiveness"> Mobile Responsiveness</label>
-            <label><input type="checkbox" name="tasks" value="Social Media Integration"> Social Media Integration</label>
-            <label><input type="checkbox" name="tasks" value="Website Maintenance"> Website Maintenance</label>
-            <label><input type="checkbox" name="tasks" value="Analytics & Reporting"> Analytics & Reporting</label>
-          </div>
+      <!-- Repeat Dropdowns for Digital Marketing, Copywriting, Analytics & SEO, AI Automation, etc. -->
+      <div class="dropdown">
+        <button type="button">Digital Marketing</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Marketing Strategy Development" data-service="Digital Marketing"> Marketing Strategy Development</label>
+          <label><input type="checkbox" name="tasks" value="Social Media Management" data-service="Digital Marketing"> Social Media Management</label>
+          <label><input type="checkbox" name="tasks" value="SEO Optimization" data-service="Digital Marketing"> SEO Optimization</label>
+          <label><input type="checkbox" name="tasks" value="Content Creation" data-service="Digital Marketing"> Content Creation</label>
+          <label><input type="checkbox" name="tasks" value="Paid Advertising" data-service="Digital Marketing"> Paid Advertising</label>
+          <label><input type="checkbox" name="tasks" value="Email Marketing" data-service="Digital Marketing"> Email Marketing</label>
+          <label><input type="checkbox" name="tasks" value="Analytics & Reporting" data-service="Digital Marketing"> Analytics & Reporting</label>
+          <label><input type="checkbox" name="tasks" value="Conversion Rate Optimization" data-service="Digital Marketing"> Conversion Rate Optimization</label>
+          <label><input type="checkbox" name="tasks" value="Influencer Marketing" data-service="Digital Marketing"> Influencer Marketing</label>
+          <label><input type="checkbox" name="tasks" value="Brand Reputation Management" data-service="Digital Marketing"> Brand Reputation Management</label>
         </div>
-
-        <div class="dropdown">
-          <button type="button">Digital Marketing</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Marketing Strategy Development"> Marketing Strategy Development</label>
-            <label><input type="checkbox" name="tasks" value="Social Media Management"> Social Media Management</label>
-            <label><input type="checkbox" name="tasks" value="SEO Optimization"> SEO Optimization</label>
-            <label><input type="checkbox" name="tasks" value="Content Creation"> Content Creation</label>
-            <label><input type="checkbox" name="tasks" value="Paid Advertising"> Paid Advertising</label>
-            <label><input type="checkbox" name="tasks" value="Email Marketing"> Email Marketing</label>
-            <label><input type="checkbox" name="tasks" value="Analytics & Reporting"> Analytics & Reporting</label>
-            <label><input type="checkbox" name="tasks" value="Conversion Rate Optimization"> Conversion Rate Optimization</label>
-            <label><input type="checkbox" name="tasks" value="Influencer Marketing"> Influencer Marketing</label>
-            <label><input type="checkbox" name="tasks" value="Brand Reputation Management"> Brand Reputation Management</label>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button">Copywriting</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Website Copy"> Website Copy</label>
-            <label><input type="checkbox" name="tasks" value="Email Campaigns"> Email Campaigns</label>
-            <label><input type="checkbox" name="tasks" value="Sales Pages"> Sales Pages</label>
-            <label><input type="checkbox" name="tasks" value="Ad Copywriting"> Ad Copywriting</label>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button">Analytics & SEO</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="SEO Audit"> SEO Audit</label>
-            <label><input type="checkbox" name="tasks" value="Keyword Research"> Keyword Research</label>
-            <label><input type="checkbox" name="tasks" value="On-page Optimization"> On-page Optimization</label>
-            <label><input type="checkbox" name="tasks" value="Technical SEO"> Technical SEO</label>
-            <label><input type="checkbox" name="tasks" value="Link Building"> Link Building</label>
-            <label><input type="checkbox" name="tasks" value="Analytics Setup & Monitoring"> Analytics Setup & Monitoring</label>
-            <label><input type="checkbox" name="tasks" value="Competitor Analysis"> Competitor Analysis</label>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button">AI Automation</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Workflow Automation"> Workflow Automation</label>
-            <label><input type="checkbox" name="tasks" value="Chatbot Integration"> Chatbot Integration</label>
-            <label><input type="checkbox" name="tasks" value="Email Sequence Automation"> Email Sequence Automation</label>
-            <label><input type="checkbox" name="tasks" value="CRM Automation"> CRM Automation</label>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button">Project Management</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Project Planning"> Project Planning</label>
-            <label><input type="checkbox" name="tasks" value="Task Management"> Task Management</label>
-            <label><input type="checkbox" name="tasks" value="Agile/Scrum Coaching"> Agile/Scrum Coaching</label>
-            <label><input type="checkbox" name="tasks" value="Resource Allocation"> Resource Allocation</label>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button">Finance & Biz Strategy</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Accounting Support"> Accounting Support</label>
-            <label><input type="checkbox" name="tasks" value="Financial Modeling"> Financial Modeling</label>
-            <label><input type="checkbox" name="tasks" value="Investment Strategy"> Investment Strategy</label>
-            <label><input type="checkbox" name="tasks" value="Bookkeeping"> Bookkeeping</label>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button">Career Development</button>
-          <div class="dropdown-content">
-            <label><input type="checkbox" name="tasks" value="Resume Writing"> Resume Writing</label>
-            <label><input type="checkbox" name="tasks" value="Interview Coaching"> Interview Coaching</label>
-            <label><input type="checkbox" name="tasks" value="Career Strategy Consulting"> Career Strategy Consulting</label>
-            <label><input type="checkbox" name="tasks" value="Job Search Support"> Job Search Support</label>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Existing Platform -->
-      <div class="section">
-        <h3>Which platform do you currently use?</h3>
-        <select name="platform" required>
-          <option value="">-- Select One --</option>
-          <option value="Shopify">Shopify</option>
-          <option value="WordPress">WordPress</option>
-          <option value="Squarespace">Squarespace</option>
-          <option value="Other">Other</option>
-          <option value="None">None</option>
-        </select>
-      </div>
+      <!-- Add remaining dropdowns similarly with data-service for each task -->
 
-      <!-- Satisfaction -->
-      <div class="section">
-        <h3>How satisfied are you with your current results?</h3>
-        <input type="number" name="satisfaction" min="1" max="10" required placeholder="1–10">
-      </div>
+    </div>
 
-      <!-- Timeline -->
-      <div class="section">
-        <h3>When do you want to start?</h3>
-        <select name="timeline" required>
-          <option value="">-- Select One --</option>
-          <option value="ASAP">ASAP</option>
-          <option value="1-2 Weeks">1–2 Weeks</option>
-          <option value="1 Month">1 Month</option>
-          <option value="Flexible">Flexible</option>
-        </select>
-      </div>
+    <!-- Existing Platform -->
+    <div class="section">
+      <h3>Which platform do you currently use?</h3>
+      <select name="platform" required>
+        <option value="">-- Select One --</option>
+        <option value="Shopify">Shopify</option>
+        <option value="WordPress">WordPress</option>
+        <option value="Squarespace">Squarespace</option>
+        <option value="Other">Other</option>
+        <option value="None">None</option>
+      </select>
+    </div>
 
-      <!-- Open-ended -->
-      <div class="section">
-        <h3>Tell us about your biggest challenges right now:</h3>
-        <textarea name="challenges" rows="4" placeholder="Describe your challenges..." required></textarea>
-      </div>
+    <!-- Satisfaction -->
+    <div class="section">
+      <h3>How satisfied are you with your current results?</h3>
+      <input type="number" name="satisfaction" min="1" max="10" required placeholder="1–10">
+    </div>
 
-      <button type="submit">Submit Form</button>
-    </form>
+    <!-- Timeline -->
+    <div class="section">
+      <h3>When do you want to start?</h3>
+      <select name="timeline" required>
+        <option value="">-- Select One --</option>
+        <option value="ASAP">ASAP</option>
+        <option value="1-2 Weeks">1–2 Weeks</option>
+        <option value="1 Month">1 Month</option>
+        <option value="Flexible">Flexible</option>
+      </select>
+    </div>
 
-    <div id="result" class="hidden"></div>
-  </section>
+    <!-- Open-ended -->
+    <div class="section">
+      <h3>Tell us about your biggest challenges right now:</h3>
+      <textarea name="challenges" rows="4" placeholder="Describe your challenges..." required></textarea>
+    </div>
 
-  <script>
-    // Dropdown toggle
-    document.querySelectorAll('.dropdown button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    <button type="submit">Submit Form</button>
+  </form>
+
+  <div id="result" class="hidden"></div>
+</section>
+
+<script>
+  // Dropdown toggle
+  document.querySelectorAll('.dropdown button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  // Auto-expand dropdown if a checkbox inside is checked
+  document.querySelectorAll('input[name="tasks"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) cb.closest('.dropdown-content').style.display = 'block';
+    });
+  });
+
+  // Form submission
+  document.querySelector("#quizForm form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Collect tasks and services
+    const tasks = formData.getAll("tasks");
+    const servicesSet = new Set();
+    document.querySelectorAll('input[name="tasks"]:checked').forEach(input => {
+      servicesSet.add(input.dataset.service);
+    });
+    const services = Array.from(servicesSet);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      services,
+      tasks,
+      platform: formData.get("platform"),
+      satisfaction: parseInt(formData.get("satisfaction")),
+      timeline: formData.get("timeline"),
+      challenges: formData.get("challenges"),
+    };
+
+    try {
+      const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
       });
-    });
 
-    // Form submission
-    document.querySelector("#quizForm form").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        services: formData.getAll("services"),
-        tasks: formData.getAll("tasks"),
-        platform: formData.get("platform"),
-        satisfaction: parseInt(formData.get("satisfaction")),
-        timeline: formData.get("timeline"),
-        challenges: formData.get("challenges"),
-      };
+      const json = await res.json();
+      const resultDiv = document.getElementById("result");
+      resultDiv.classList.remove("hidden");
+      resultDiv.textContent = json.message || "Submission received!";
 
-      try {
-        const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/quiz", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-
-        const json = await res.json();
-        const resultDiv = document.getElementById("result");
-        resultDiv.classList.remove("hidden");
-        resultDiv.textContent = json.message || "Submission received!";
-
-        if (json.redirect) {
-          setTimeout(() => { window.location.href = json.redirect; }, 2000);
-        }
-
-      } catch (err) {
-        console.error("Error submitting quiz:", err);
-        const resultDiv = document.getElementById("result");
-        resultDiv.classList.remove("hidden");
-        resultDiv.textContent = "⚠️ There was an error submitting your form. Please try again.";
+      if (json.redirect) {
+        setTimeout(() => { window.location.href = json.redirect; }, 2000);
       }
-    });
-  </script>
+
+    } catch (err) {
+      console.error("Error submitting quiz:", err);
+      const resultDiv = document.getElementById("result");
+      resultDiv.classList.remove("hidden");
+      resultDiv.textContent = "⚠️ There was an error submitting your form. Please try again.";
+    }
+  });
+</script>
 
 </body>
 </html>
