@@ -1,102 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Fit Form | FullStackEnterprise</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Dropdown container styling */
-    .dropdown {
-      margin: 15px 0;
-      border-radius: 8px;
-      background: #111;
-      padding: 12px;
-      color: #fff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Fit Form | FullStackEnterprise</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { font-family: system-ui, sans-serif; background:#121212; color:#fff; margin:0; }
+  h2, h3 { color: #fff; }
+  #quizForm { max-width: 700px; margin: 0 auto; padding: 20px; background: #1a1a1a; border-radius: 12px; }
+  #quizForm h1 { text-align: center; margin-bottom: 15px; }
 
-    .dropdown button {
-      width: 100%;
-      text-align: left;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      background: #007bff;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
+  .section { margin-bottom: 20px; }
+  input, select, textarea, button { width: 100%; padding: 10px; margin-top:5px; margin-bottom:10px; border-radius:5px; border:none; font-size:1rem; }
+  button[type="submit"] { background:#28a745; color:#fff; cursor:pointer; transition:background 0.2s ease; }
+  button[type="submit"]:hover { background:#218838; }
 
-    .dropdown button:hover {
-      background: #0056b3;
-    }
+  #result { margin-top:20px; padding:10px; border-radius:5px; background:#333; color:#fff; }
+  #result.hidden { display:none; }
 
-    .dropdown-content {
-      display: none;
-      margin-top: 10px;
-      padding-left: 15px;
-      color: #ccc;
-    }
-
-    .dropdown-content label {
-      display: block;
-      margin-bottom: 5px;
-      cursor: pointer;
-    }
-
-    /* Form styling */
-    #quizForm {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-      background: #1a1a1a;
-      border-radius: 12px;
-      color: #fff;
-    }
-
-    #quizForm h1 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-
-    .section {
-      margin-bottom: 20px;
-    }
-
-    input, select, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    button[type="submit"] {
-      background: #28a745;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    button[type="submit"]:hover {
-      background: #218838;
-    }
-
-    #result.hidden {
-      display: none;
-    }
-
-    #result {
-      margin-top: 20px;
-      padding: 10px;
-      border-radius: 5px;
-      background: #333;
-      color: #fff;
-    }
-  </style>
+  /* Dropdown styling */
+  .dropdown { margin: 15px 0; border-radius:8px; background:#111; padding:12px; color:#fff; }
+  .dropdown button { width:100%; text-align:left; padding:10px; border:none; border-radius:5px; background:#007bff; color:#fff; font-size:1rem; cursor:pointer; transition: background 0.2s ease; }
+  .dropdown button:hover { background:#0056b3; }
+  .dropdown-content { display:none; margin-top:10px; padding-left:15px; color:#ccc; }
+  .dropdown-content label { display:block; margin-bottom:5px; cursor:pointer; }
+</style>
 </head>
 <body>
 
@@ -108,19 +37,15 @@
     <!-- Contact Info -->
     <div class="section">
       <h3>Contact Info</h3>
-      <label>Name:
-        <input type="text" name="name" placeholder="Your name" required>
-      </label>
-      <label>Email:
-        <input type="email" name="email" placeholder="you@example.com" required>
-      </label>
+      <label>Name: <input type="text" name="name" placeholder="Your name" required></label>
+      <label>Email: <input type="email" name="email" placeholder="you@example.com" required></label>
     </div>
 
-    <!-- Service Dropdowns with Tasks Checkboxes -->
+    <!-- Service Dropdowns with Tasks -->
     <div class="section">
       <h3>Which services are you interested in? (select all that apply)</h3>
 
-      <!-- Example Dropdown: Web Development -->
+      <!-- Web Development -->
       <div class="dropdown">
         <button type="button">Web Development</button>
         <div class="dropdown-content">
@@ -138,7 +63,7 @@
         </div>
       </div>
 
-      <!-- Repeat Dropdowns for Digital Marketing, Copywriting, Analytics & SEO, AI Automation, etc. -->
+      <!-- Digital Marketing -->
       <div class="dropdown">
         <button type="button">Digital Marketing</button>
         <div class="dropdown-content">
@@ -155,7 +80,74 @@
         </div>
       </div>
 
-      <!-- Add remaining dropdowns similarly with data-service for each task -->
+      <!-- Copywriting -->
+      <div class="dropdown">
+        <button type="button">Copywriting</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Website Copy" data-service="Copywriting"> Website Copy</label>
+          <label><input type="checkbox" name="tasks" value="Email Campaigns" data-service="Copywriting"> Email Campaigns</label>
+          <label><input type="checkbox" name="tasks" value="Sales Pages" data-service="Copywriting"> Sales Pages</label>
+          <label><input type="checkbox" name="tasks" value="Ad Copywriting" data-service="Copywriting"> Ad Copywriting</label>
+        </div>
+      </div>
+
+      <!-- Analytics & SEO -->
+      <div class="dropdown">
+        <button type="button">Analytics & SEO</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="SEO Audit" data-service="Analytics & SEO"> SEO Audit</label>
+          <label><input type="checkbox" name="tasks" value="Keyword Research" data-service="Analytics & SEO"> Keyword Research</label>
+          <label><input type="checkbox" name="tasks" value="On-page Optimization" data-service="Analytics & SEO"> On-page Optimization</label>
+          <label><input type="checkbox" name="tasks" value="Technical SEO" data-service="Analytics & SEO"> Technical SEO</label>
+          <label><input type="checkbox" name="tasks" value="Link Building" data-service="Analytics & SEO"> Link Building</label>
+          <label><input type="checkbox" name="tasks" value="Analytics Setup & Monitoring" data-service="Analytics & SEO"> Analytics Setup & Monitoring</label>
+          <label><input type="checkbox" name="tasks" value="Competitor Analysis" data-service="Analytics & SEO"> Competitor Analysis</label>
+        </div>
+      </div>
+
+      <!-- AI Automation -->
+      <div class="dropdown">
+        <button type="button">AI Automation</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Workflow Automation" data-service="AI Automation"> Workflow Automation</label>
+          <label><input type="checkbox" name="tasks" value="Chatbot Integration" data-service="AI Automation"> Chatbot Integration</label>
+          <label><input type="checkbox" name="tasks" value="Email Sequence Automation" data-service="AI Automation"> Email Sequence Automation</label>
+          <label><input type="checkbox" name="tasks" value="CRM Automation" data-service="AI Automation"> CRM Automation</label>
+        </div>
+      </div>
+
+      <!-- Project Management -->
+      <div class="dropdown">
+        <button type="button">Project Management</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Project Planning" data-service="Project Management"> Project Planning</label>
+          <label><input type="checkbox" name="tasks" value="Task Management" data-service="Project Management"> Task Management</label>
+          <label><input type="checkbox" name="tasks" value="Agile/Scrum Coaching" data-service="Project Management"> Agile/Scrum Coaching</label>
+          <label><input type="checkbox" name="tasks" value="Resource Allocation" data-service="Project Management"> Resource Allocation</label>
+        </div>
+      </div>
+
+      <!-- Finance & Biz Strategy -->
+      <div class="dropdown">
+        <button type="button">Finance & Biz Strategy</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Accounting Support" data-service="Finance & Biz Strategy"> Accounting Support</label>
+          <label><input type="checkbox" name="tasks" value="Financial Modeling" data-service="Finance & Biz Strategy"> Financial Modeling</label>
+          <label><input type="checkbox" name="tasks" value="Investment Strategy" data-service="Finance & Biz Strategy"> Investment Strategy</label>
+          <label><input type="checkbox" name="tasks" value="Bookkeeping" data-service="Finance & Biz Strategy"> Bookkeeping</label>
+        </div>
+      </div>
+
+      <!-- Career Development -->
+      <div class="dropdown">
+        <button type="button">Career Development</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" name="tasks" value="Resume Writing" data-service="Career Development"> Resume Writing</label>
+          <label><input type="checkbox" name="tasks" value="Interview Coaching" data-service="Career Development"> Interview Coaching</label>
+          <label><input type="checkbox" name="tasks" value="Career Strategy Consulting" data-service="Career Development"> Career Strategy Consulting</label>
+          <label><input type="checkbox" name="tasks" value="Job Search Support" data-service="Career Development"> Job Search Support</label>
+        </div>
+      </div>
 
     </div>
 
@@ -224,7 +216,7 @@
     const form = e.target;
     const formData = new FormData(form);
 
-    // Collect tasks and services
+    // Collect tasks and dynamic services
     const tasks = formData.getAll("tasks");
     const servicesSet = new Set();
     document.querySelectorAll('input[name="tasks"]:checked').forEach(input => {
