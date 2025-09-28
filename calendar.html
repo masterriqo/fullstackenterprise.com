@@ -77,6 +77,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const API_BASE = 'https://api.fullstackenterprise.com'; // Worker base URL
   const monthYear = document.getElementById('monthYear');
   const calendarDates = document.getElementById('calendarDates');
   const prevMonthBtn = document.getElementById('prevMonth');
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchAllBookings() {
     try {
-      const resp = await fetch('/bookings.json');
+      const resp = await fetch(`${API_BASE}/bookings.json`);
       if(!resp.ok) return;
       const bookings = await resp.json();
       bookedDatesMap = {};
@@ -162,7 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
     data.end_time = new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString();
 
     try {
-      const resp = await fetch('/book-consult', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+      const resp = await fetch(`${API_BASE}/book-consult`, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+      });
       const result = await resp.json();
       if(resp.ok){
         alert('Booking confirmed!');
@@ -189,6 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchAllBookings().then(()=>renderCalendar(currentDate));
 });
 </script>
-
+  
 </body>
 </html>
