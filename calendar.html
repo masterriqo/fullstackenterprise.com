@@ -70,12 +70,18 @@
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="hidden" name="start_time">
       <input type="hidden" name="end_time">
+      <input type="hidden" name="turnstileToken">
 
       <label style="color:#fff; margin-bottom:5px;">Select Time Slot:</label>
       <select id="timeSlot" required></select>
 
       <!-- Turnstile widget -->
-      <div class="cf-turnstile" data-sitekey="0x4AAAAAAB28HBFJf48unlqA"></div>
+      <div 
+        class="cf-turnstile" 
+        data-sitekey="0x4AAAAAAB28HBFJf48unlqA" 
+        data-callback="onTurnstileSuccess" 
+        data-expired-callback="onTurnstileExpired">
+      </div>
 
       <button type="submit">Confirm Booking</button>
     </form>
@@ -97,6 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentDate = new Date();
   let bookedDatesMap = {};
+
+  // --- Turnstile callbacks ---
+  window.onTurnstileSuccess = function(token){
+    bookingForm.querySelector('input[name="turnstileToken"]').value = token;
+  };
+  window.onTurnstileExpired = function(){
+    bookingForm.querySelector('input[name="turnstileToken"]').value = '';
+    alert('Turnstile verification expired. Please complete it again.');
+  };
 
   async function fetchAllBookings() {
     try {
@@ -162,13 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   bookingForm.addEventListener('submit', async e => {
     e.preventDefault();
+
+    const token = bookingForm.querySelector('input[name="turnstileToken"]').value;
+    if (!token) return alert('Please complete the Turnstile verification');
+
     const formData = new FormData(bookingForm);
     const data = Object.fromEntries(formData.entries());
-
-    // Capture Turnstile token
-    const turnstileToken = document.querySelector('.cf-turnstile-response')?.value;
-    if(!turnstileToken) return alert('Please complete the Turnstile verification');
-    data.turnstileToken = turnstileToken;
 
     const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
     const date = modal.dataset.date;
@@ -209,5 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchAllBookings().then(()=>renderCalendar(currentDate));
 });
 </script>
+
 </body>
 </html>
