@@ -41,6 +41,9 @@
   #closeModal { background:#444; margin-top:5px; }
   #closeModal:hover { background:#222; }
 </style>
+
+<!-- Cloudflare Turnstile Widget -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -67,8 +70,13 @@
       <input type="email" name="email" placeholder="Your Email" required>
       <input type="hidden" name="start_time">
       <input type="hidden" name="end_time">
+
       <label style="color:#fff; margin-bottom:5px;">Select Time Slot:</label>
       <select id="timeSlot" required></select>
+
+      <!-- Turnstile widget -->
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAB28HBFJf48unlqA"></div>
+
       <button type="submit">Confirm Booking</button>
     </form>
     <button id="closeModal">Cancel</button>
@@ -77,7 +85,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const API_BASE = 'https://api.fullstackenterprise.com'; // Worker base URL
+  const API_BASE = 'https://api.fullstackenterprise.com';
   const monthYear = document.getElementById('monthYear');
   const calendarDates = document.getElementById('calendarDates');
   const prevMonthBtn = document.getElementById('prevMonth');
@@ -156,6 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const formData = new FormData(bookingForm);
     const data = Object.fromEntries(formData.entries());
+
+    // Capture Turnstile token
+    const turnstileToken = document.querySelector('.cf-turnstile-response')?.value;
+    if(!turnstileToken) return alert('Please complete the Turnstile verification');
+    data.turnstileToken = turnstileToken;
+
     const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
     const date = modal.dataset.date;
 
@@ -173,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Booking confirmed!');
         modal.classList.add('hidden');
         bookingForm.reset();
+        if(window.turnstile) turnstile.reset(); // Reset widget
         await fetchAllBookings();
         renderCalendar(currentDate);
       } else alert(result.error || 'Booking failed');
@@ -194,6 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchAllBookings().then(()=>renderCalendar(currentDate));
 });
 </script>
-  
 </body>
 </html>
