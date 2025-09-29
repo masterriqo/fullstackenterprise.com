@@ -249,7 +249,7 @@
         challenges: formData.get("challenges"),
         turnstileToken
       };
-
+      console.log("Submitting data:", data); // <-- add this
       const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/quiz", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
