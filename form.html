@@ -241,8 +241,8 @@
       const data = {
         name: formData.get("name"),
         email: formData.get("email"),
-        services,
-        serviceTasks,
+        service_type: services.length ? services[0] : null,   // single string
+        service_tasks: serviceTasks,                         // JSON object
         platform: formData.get("platform"),
         satisfaction: parseInt(formData.get("satisfaction")),
         timeline: formData.get("timeline"),
