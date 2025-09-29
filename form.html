@@ -44,7 +44,6 @@
     <!-- Service Dropdowns with Tasks -->
     <div class="section">
       <h3>Which services are you interested in? (select all that apply)</h3>
-
       <!-- Web Development -->
       <div class="dropdown">
         <button type="button">Web Development</button>
@@ -227,7 +226,8 @@
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
-      serviceTasks, // structured mapping of service -> tasks
+      services: Object.keys(serviceTasks),
+      serviceTasks,
       platform: formData.get("platform"),
       satisfaction: parseInt(formData.get("satisfaction")),
       timeline: formData.get("timeline"),
