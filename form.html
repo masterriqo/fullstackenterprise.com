@@ -216,19 +216,18 @@
     const form = e.target;
     const formData = new FormData(form);
 
-    // Collect tasks and dynamic services
-    const tasks = formData.getAll("tasks");
-    const servicesSet = new Set();
+    // Collect tasks grouped by service
+    const serviceTasks = {};
     document.querySelectorAll('input[name="tasks"]:checked').forEach(input => {
-      servicesSet.add(input.dataset.service);
+      const service = input.dataset.service;
+      if (!serviceTasks[service]) serviceTasks[service] = [];
+      serviceTasks[service].push(input.value);
     });
-    const services = Array.from(servicesSet);
 
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
-      services,
-      tasks,
+      serviceTasks, // structured mapping of service -> tasks
       platform: formData.get("platform"),
       satisfaction: parseInt(formData.get("satisfaction")),
       timeline: formData.get("timeline"),
