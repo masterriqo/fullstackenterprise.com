@@ -237,11 +237,11 @@
         alert("Please complete the CAPTCHA.");
         return;
       }
-
+      const services = Object.keys(serviceTasks); // <-- ADD THIS
       const data = {
         name: formData.get("name"),
         email: formData.get("email"),
-        services: Object.keys(serviceTasks),
+        services,
         serviceTasks,
         platform: formData.get("platform"),
         satisfaction: parseInt(formData.get("satisfaction")),
