@@ -182,8 +182,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!token) return alert('Please complete the Turnstile verification');
 
     const formData = new FormData(bookingForm);
-    const data = Object.fromEntries(formData.entries());
-
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      start_time: new Date(`${date}T${convertTo24Hour(startTimeStr)}:00`).toISOString(),
+      end_time: new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString(),
+      turnstileToken: formData.get("turnstileToken"),
+      services: [],          // or load from localStorage if available
+      serviceTasks: {},     // or load from localStorage if available
+      client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    };
     const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
     const date = modal.dataset.date;
 
