@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     data.end_time = new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString();
 
     try {
-      const resp = await fetch(`${API_BASE}/quiz`, {
+      const resp = await fetch(`${API_BASE}/book-consult`, {
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(data)
