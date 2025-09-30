@@ -183,9 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
     const date = modal.dataset.date;
 
-    data.start_time = new Date(`${date}T${convertTo24Hour(startTimeStr)}:00`).toISOString();
-    data.end_time = new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString();
-
     const formData = new FormData(bookingForm);
     const data = {
       name: formData.get("name"),
