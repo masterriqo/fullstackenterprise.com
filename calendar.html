@@ -180,6 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const token = bookingForm.querySelector('input[name="turnstileToken"]').value;
     if (!token) return alert('Please complete the Turnstile verification');
+    const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
+    const date = modal.dataset.date;
+
+    data.start_time = new Date(`${date}T${convertTo24Hour(startTimeStr)}:00`).toISOString();
+    data.end_time = new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString();
 
     const formData = new FormData(bookingForm);
     const data = {
@@ -192,11 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
       serviceTasks: {},     // or load from localStorage if available
       client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
     };
-    const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
-    const date = modal.dataset.date;
-
-    data.start_time = new Date(`${date}T${convertTo24Hour(startTimeStr)}:00`).toISOString();
-    data.end_time = new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString();
 
     try {
       const resp = await fetch(`${API_BASE}/book-consult`, {
