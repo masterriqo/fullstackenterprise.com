@@ -476,3 +476,32 @@ footer a:hover {
     font-size: 1.25rem;
   }
 }
+
+
+/* ==============================
+   GREEN BUTTON
+============================== */
+.btn {
+  display: inline-block;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: #28a745; /* green */
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: #218838; /* darker green on hover */
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
