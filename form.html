@@ -34,7 +34,7 @@
   <h1>Find the Right Service for You</h1>
   <p>Answer a few quick questions to see if you qualify for a free consultation.</p>
 
-  <form id="quizForm" action="https://marketing-api.tyriqnallen.workers.dev/quiz" method="POST">
+  <form id="quizForm" action="https://marketing-api.tyriqnallen.workers.dev/bookings" method="POST">
     <!-- Contact Info -->
     <div class="section">
       <h3>Contact Info</h3>
@@ -217,54 +217,53 @@
   });
 
   // Form submission
-  document.querySelector("#quizForm form").addEventListener("submit", async function(e) {
+  document.querySelector("#quizForm form").addEventListener("submit", async function (e) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-
+  
     // Collect tasks grouped by service
     const serviceTasks = {};
-    document.querySelectorAll('input[name="tasks"]:checked').forEach(input => {
+    document.querySelectorAll('input[name="tasks"]:checked').forEach((input) => {
       const service = input.dataset.service;
       if (!serviceTasks[service]) serviceTasks[service] = [];
       serviceTasks[service].push(input.value);
     });
-
+  
     try {
-      // Get Turnstile token
+      // ✅ Get Turnstile token
       const turnstileToken = await turnstile.getResponse(document.getElementById("turnstile-widget"));
       if (!turnstileToken) {
         alert("Please complete the CAPTCHA.");
         return;
       }
-      const services = Object.keys(serviceTasks); // <-- ADD THIS
+  
+      // ✅ Match Supabase schema
+      const services = Object.keys(serviceTasks);
       const data = {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        service_type: services.length ? services[0] : null,   // single string
-        service_tasks: serviceTasks,                         // JSON object
-        platform: formData.get("platform"),
-        satisfaction: parseInt(formData.get("satisfaction")),
-        timeline: formData.get("timeline"),
-        challenges: formData.get("challenges"),
-        turnstileToken
+        user_name: formData.get("name"),          // renamed to match Supabase column
+        user_email: formData.get("email"),        // renamed to match Supabase column
+        service_type: services.length ? services[0] : null,
+        service_tasks: serviceTasks
       };
-      console.log("Submitting data:", data); // <-- add this
-      const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/quiz", {
+  
+      console.log("Submitting data:", data);
+  
+      // ✅ Send to Worker → Supabase
+      const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
-
+  
       const json = await res.json();
       const resultDiv = document.getElementById("result");
       resultDiv.classList.remove("hidden");
       resultDiv.textContent = json.message || "Submission received!";
-
-      if (json.redirect) setTimeout(() => { window.location.href = json.redirect; }, 2000);
-
+  
+      if (json.redirect) setTimeout(() => (window.location.href = json.redirect), 2000);
     } catch (err) {
-      console.error("Error submitting quiz:", err);
+      console.error("Error submitting form:", err);
       const resultDiv = document.getElementById("result");
       resultDiv.classList.remove("hidden");
       resultDiv.textContent = "⚠️ There was an error submitting your form. Please try again.";
