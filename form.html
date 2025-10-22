@@ -34,7 +34,8 @@
   <h1>Find the Right Service for You</h1>
   <p>Answer a few quick questions to see if you qualify for a free consultation.</p>
 
-  <form id="quizForm" action="https://marketing-api.tyriqnallen.workers.dev/bookings" method="POST">
+  <form id="quizForm" action="https://api.fullstackenterprise.com/book-consult" method="POST">
+
     <!-- Contact Info -->
     <div class="section">
       <h3>Contact Info</h3>
@@ -250,7 +251,7 @@
       console.log("Submitting data:", data);
   
       // ✅ Send to Worker → Supabase
-      const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/bookings", {
+      const res = await fetch("https://api.fullstackenterprise.com/book-consult", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
