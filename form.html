@@ -242,10 +242,12 @@
       // ✅ Match Supabase schema
       const services = Object.keys(serviceTasks);
       const data = {
-        user_name: formData.get("name"),          // renamed to match Supabase column
-        user_email: formData.get("email"),        // renamed to match Supabase column
-        service_type: services.length ? services[0] : null,
-        service_tasks: serviceTasks
+        user_name: formData.get("name") || "",
+        user_email: formData.get("email") || "",
+        service_type: services.length ? services[0] : "",
+        service_tasks: JSON.stringify(serviceTasks),  // <-- important
+        status: "lead",                                // <-- required by Supabase
+        created_at: new Date().toISOString()           // <-- required by Supabase
       };
   
       console.log("Submitting data:", data);
