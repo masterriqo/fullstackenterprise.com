@@ -218,7 +218,7 @@
   });
 
   // Form submission
-  document.querySelector("#quizForm form").addEventListener("submit", async function (e) {
+  document.querySelector("#quizForm").addEventListener("submit", async function (e) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
