@@ -175,26 +175,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  bookingForm.addEventListener('submit', async e => {
-    e.preventDefault();
 
     const token = bookingForm.querySelector('input[name="turnstileToken"]').value;
     if (!token) return alert('Please complete the Turnstile verification');
     const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
     const date = modal.dataset.date;
-
+  // --- Grab extra form.html data from localStorage ---
+  function getExtraFormData() {
+    const serviceType = localStorage.getItem('service_type') || '';
+    const serviceTasksStr = localStorage.getItem('service_tasks') || '{}';
+    let serviceTasks;
+    try { serviceTasks = JSON.parse(serviceTasksStr); } 
+    catch(e) { serviceTasks = {}; }
+    return { serviceType, serviceTasks };
+  }
+  
+  bookingForm.addEventListener('submit', async e => {
+    e.preventDefault();
+  
+    const token = bookingForm.querySelector('input[name="turnstileToken"]').value;
+    if (!token) return alert('Please complete the Turnstile verification');
+  
+    const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
+    const date = modal.dataset.date;
+  
+    const extraData = getExtraFormData();
     const formData = new FormData(bookingForm);
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
       start_time: new Date(`${date}T${convertTo24Hour(startTimeStr)}:00`).toISOString(),
       end_time: new Date(`${date}T${convertTo24Hour(endTimeStr)}:00`).toISOString(),
-      turnstileToken: formData.get("turnstileToken"),
-      services: [],          // or load from localStorage if available
-      serviceTasks: {},     // or load from localStorage if available
+      turnstileToken: token,
+      service_type: extraData.serviceType,
+      service_tasks: extraData.serviceTasks,
       client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
     };
-
+  
     try {
       const resp = await fetch(`${API_BASE}/book-consult`, {
         method:'POST',
@@ -206,11 +223,13 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Booking confirmed!');
         modal.classList.add('hidden');
         bookingForm.reset();
-        if(window.turnstile) turnstile.reset(); // Reset widget
+        if(window.turnstile) turnstile.reset();
         await fetchAllBookings();
         renderCalendar(currentDate);
       } else alert(result.error || 'Booking failed');
-    } catch(err){ alert('Network error, please try again.'); }
+    } catch(err){
+      alert('Network error, please try again.');
+    }
   });
 
   function convertTo24Hour(timeStr){
