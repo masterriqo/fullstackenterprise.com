@@ -242,8 +242,8 @@
       // ✅ Match Supabase schema
       const services = Object.keys(serviceTasks);
       const data = {
-        user_name: formData.get("name") || "",
-        user_email: formData.get("email") || "",
+        name: formData.get("name") || "",
+        email: formData.get("email") || "",
         service_type: services.length ? services[0] : "",
         service_tasks: JSON.stringify(serviceTasks),  // <-- important
         status: "lead",                                // <-- required by Supabase
