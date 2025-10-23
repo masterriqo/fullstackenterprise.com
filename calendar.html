@@ -176,10 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-    const token = bookingForm.querySelector('input[name="turnstileToken"]').value;
-    if (!token) return alert('Please complete the Turnstile verification');
-    const [startTimeStr, endTimeStr] = timeSlotSelect.value.split('-');
-    const date = modal.dataset.date;
+
   // --- Grab extra form.html data from localStorage ---
   function getExtraFormData() {
     const serviceType = localStorage.getItem('service_type') || '';
