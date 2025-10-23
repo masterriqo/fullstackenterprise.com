@@ -245,9 +245,14 @@
         name: formData.get("name") || "",
         email: formData.get("email") || "",
         service_type: services.length ? services[0] : "",
-        service_tasks: JSON.stringify(serviceTasks),  // <-- important
-        status: "lead",                                // <-- required by Supabase
-        created_at: new Date().toISOString()           // <-- required by Supabase
+        service_tasks: JSON.stringify(serviceTasks),
+        platform: formData.get("platform") || "",
+        satisfaction: formData.get("satisfaction") || "",
+        timeline: formData.get("timeline") || "",
+        challenges: formData.get("challenges") || "",
+        turnstile_token: turnstileToken,
+        status: "lead",
+        created_at: new Date().toISOString()
       };
   
       console.log("Submitting data:", data);
