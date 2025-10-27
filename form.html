@@ -258,7 +258,7 @@
       console.log("Submitting data:", data);
   
       // ✅ Send to Worker → Supabase
-      const res = await fetch("https://api.fullstackenterprise.com/book-consult", {
+      const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/book-consult", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
