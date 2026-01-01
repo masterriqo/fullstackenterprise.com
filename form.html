@@ -12,29 +12,61 @@
   #quizForm h1 { text-align: center; margin-bottom: 15px; }
 
   .section { margin-bottom: 20px; }
-  input, select, textarea, button { width: 100%; padding: 10px; margin-top:5px; margin-bottom:10px; border-radius:5px; border:none; font-size:1rem; }
-  button[type="submit"] { background:#28a745; color:#fff; cursor:pointer; transition:background 0.2s ease; }
+  input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-top:5px;
+    margin-bottom:10px;
+    border-radius:5px;
+    border:none;
+    font-size:1rem;
+  }
+  button[type="submit"] {
+    background:#28a745;
+    color:#fff;
+    cursor:pointer;
+    transition:background 0.2s ease;
+  }
   button[type="submit"]:hover { background:#218838; }
 
-  #result { margin-top:20px; padding:10px; border-radius:5px; background:#333; color:#fff; }
+  #result {
+    margin-top:20px;
+    padding:10px;
+    border-radius:5px;
+    background:#333;
+    color:#fff;
+  }
   #result.hidden { display:none; }
 </style>
-<!-- Turnstile script -->
+
+<!-- Turnstile -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
 <section id="quizForm">
   <h1>Find the Right Service for You</h1>
-  <p>Answer a few quick questions so we can understand your situation and see how we can help.</p>
+  <p>Answer a few quick questions so we can understand your situation and decide next steps.</p>
 
-  <form id="quizForm" action="https://api.fullstackenterprise.com/book-consult" method="POST">
+  <form id="quizForm" method="POST">
 
     <!-- Contact Info -->
     <div class="section">
       <h3>Contact Info</h3>
-      <label>Name: <input type="text" name="name" placeholder="Your name" required></label>
-      <label>Email: <input type="email" name="email" placeholder="you@example.com" required></label>
+      <label>
+        Name:
+        <input type="text" name="name" placeholder="Your name" required>
+      </label>
+
+      <label>
+        Email:
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </label>
+
+      <label>
+        Phone (optional — faster follow-up):
+        <input type="tel" name="phone" placeholder="+1 (optional)">
+      </label>
     </div>
 
     <!-- Blocker -->
@@ -43,7 +75,7 @@
       <textarea name="blocker" rows="4" placeholder="Describe what feels stuck, broken, or unclear..." required></textarea>
     </div>
 
-    <!-- Where problem lives -->
+    <!-- Problem Area -->
     <div class="section">
       <h3>Where does this problem live?</h3>
       <select name="problem_area" required>
@@ -59,7 +91,7 @@
 
     <!-- Build vs Fix -->
     <div class="section">
-      <h3>Is this something you’re building from scratch or fixing/improving?</h3>
+      <h3>Is this something you’re building or fixing?</h3>
       <select name="build_vs_fix" required>
         <option value="">-- Select One --</option>
         <option value="Building from scratch">Building from scratch</option>
@@ -68,7 +100,7 @@
       </select>
     </div>
 
-    <!-- Existing Platform -->
+    <!-- Platform -->
     <div class="section">
       <h3>Which platform do you currently use?</h3>
       <select name="platform" required>
@@ -78,6 +110,39 @@
         <option value="Squarespace">Squarespace</option>
         <option value="Other">Other</option>
         <option value="None">None</option>
+      </select>
+    </div>
+
+    <!-- Business Plan -->
+    <div class="section">
+      <h3>Do you currently have a business plan?</h3>
+      <select name="business_plan" required>
+        <option value="">-- Select One --</option>
+        <option value="Yes - written">Yes (written / active)</option>
+        <option value="Rough / informal">Rough / informal</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <!-- Marketing Plan -->
+    <div class="section">
+      <h3>Do you currently have a marketing plan?</h3>
+      <select name="marketing_plan" required>
+        <option value="">-- Select One --</option>
+        <option value="Yes - written">Yes (written / active)</option>
+        <option value="Rough / informal">Rough / informal</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <!-- Operating Model -->
+    <div class="section">
+      <h3>How are you currently operating?</h3>
+      <select name="operating_model" required>
+        <option value="">-- Select One --</option>
+        <option value="Solo">Solo</option>
+        <option value="Small team (2–5)">Small team (2–5)</option>
+        <option value="Agency / Studio">Agency / Studio</option>
       </select>
     </div>
 
@@ -93,15 +158,17 @@
       </select>
     </div>
 
-    <!-- Open-ended -->
+    <!-- Additional Context -->
     <div class="section">
-      <h3>Any other context or details we should know?</h3>
-      <textarea name="challenges" rows="3" placeholder="Optional: Anything else about your situation..."></textarea>
+      <h3>Any other context we should know?</h3>
+      <textarea name="challenges" rows="3" placeholder="Optional but helpful…"></textarea>
     </div>
 
     <!-- Turnstile -->
     <div class="section">
-      <div id="turnstile-widget" class="cf-turnstile" data-sitekey="0x4AAAAAAB28HBFJf48unlqA"></div>
+      <div id="turnstile-widget"
+           class="cf-turnstile"
+           data-sitekey="0x4AAAAAAB28HBFJf48unlqA"></div>
     </div>
 
     <button type="submit">Submit Form</button>
@@ -111,54 +178,71 @@
 </section>
 
 <script>
-  // Form submission
-  document.querySelector("#quizForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+document.querySelector("#quizForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
 
-    try {
-      const turnstileToken = await turnstile.getResponse(document.getElementById("turnstile-widget"));
-      if (!turnstileToken) {
-        alert("Please complete the CAPTCHA.");
-        return;
-      }
+  try {
+    const turnstileToken = await turnstile.getResponse(
+      document.getElementById("turnstile-widget")
+    );
 
-      const data = {
-        name: formData.get("name") || "",
-        email: formData.get("email") || "",
-        blocker: formData.get("blocker") || "",
-        problem_area: formData.get("problem_area") || "",
-        build_vs_fix: formData.get("build_vs_fix") || "",
-        platform: formData.get("platform") || "",
-        timeline: formData.get("timeline") || "",
-        challenges: formData.get("challenges") || "",
-        turnstile_token: turnstileToken,
-        status: "lead",
-        created_at: new Date().toISOString()
-      };
+    if (!turnstileToken) {
+      alert("Please complete the CAPTCHA.");
+      return;
+    }
 
-      console.log("Submitting data:", data);
+    const data = {
+      name: formData.get("name") || "",
+      email: formData.get("email") || "",
+      phone: formData.get("phone") || null,
 
-      const res = await fetch("https://marketing-api.tyriqnallen.workers.dev/book-consult", {
+      blocker: formData.get("blocker") || "",
+      problem_area: formData.get("problem_area") || "",
+      build_vs_fix: formData.get("build_vs_fix") || "",
+      platform: formData.get("platform") || "",
+
+      business_plan: formData.get("business_plan") || null,
+      marketing_plan: formData.get("marketing_plan") || null,
+      operating_model: formData.get("operating_model") || null,
+
+      timeline: formData.get("timeline") || "",
+      challenges: formData.get("challenges") || "",
+
+      turnstile_token: turnstileToken,
+      status: "lead",
+      created_at: new Date().toISOString()
+    };
+
+    console.log("Submitting data:", data);
+
+    const res = await fetch(
+      "https://marketing-api.tyriqnallen.workers.dev/book-consult",
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
-      });
+      }
+    );
 
-      const json = await res.json();
-      const resultDiv = document.getElementById("result");
-      resultDiv.classList.remove("hidden");
-      resultDiv.textContent = json.message || "Submission received!";
-      if (json.redirect) setTimeout(() => (window.location.href = json.redirect), 2000);
+    const json = await res.json();
 
-    } catch (err) {
-      console.error("Error submitting form:", err);
-      const resultDiv = document.getElementById("result");
-      resultDiv.classList.remove("hidden");
-      resultDiv.textContent = "⚠️ There was an error submitting your form. Please try again.";
+    const resultDiv = document.getElementById("result");
+    resultDiv.classList.remove("hidden");
+    resultDiv.textContent = json.message || "Submission received.";
+
+    if (json.redirect) {
+      setTimeout(() => window.location.href = json.redirect, 2000);
     }
-  });
+
+  } catch (err) {
+    console.error("Submission error:", err);
+    const resultDiv = document.getElementById("result");
+    resultDiv.classList.remove("hidden");
+    resultDiv.textContent = "⚠️ There was an error submitting the form.";
+  }
+});
 </script>
 
 </body>
